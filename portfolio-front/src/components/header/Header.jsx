@@ -1,7 +1,6 @@
 import { useStateContext } from "../../context/ContextProvider"
 import useDimensions from "../customHooks/useDimensions"
-import NavBarLarge from "./NavBarLarge"
-import NavBarSmall from "./NavBarSmall"
+import NavBar from "./NavBar"
 import BrandIcon from "../icons/BrandIcon"
 import DarkThemeIcon from "../icons/DarkThemeIcon"
 import LightThemeIcon from "../icons/LightThemeIcon"
@@ -9,7 +8,12 @@ import LightThemeIcon from "../icons/LightThemeIcon"
 
 const Header = () => {
 
-  const {theme, themeStyle, setTheme} = useStateContext();
+  const {
+    theme, 
+    themeStyle, 
+    sidebar,
+    setSideBar, 
+    setTheme} = useStateContext();
 
   const screenSize = useDimensions();
 
@@ -21,13 +25,20 @@ const Header = () => {
       style={`w-7 h-7 ${themeStyle.textColor}`}
     />
   
-  const NavItem = screenSize.width > 640 ?
-    <NavBarLarge /> :
-    <NavBarSmall />
+  const NavItem = screenSize.width > 640 &&
+    <NavBar />
+
+  if (screenSize.width > 640) {
+    setSideBar(false);
+  }
+
+  console.log(sidebar)
 
   return (
     <header
       className="
+       fixed
+       top-0
        flex
        justify-between
        items-center
@@ -43,21 +54,26 @@ const Header = () => {
           flex
           items-center
         "
-      >
-        <button
-          className={`
-            p-2
-            rounded-full
-            transition
-            duration-200
-            hover:ease-in-out
-            ${themeStyle.hover.bgColor}
-            ${themeStyle.hover.bgOpacity}
-          `}
-          onClick={ toggleTheme }
-        >
-          { themeIcon }
-        </button>
+      > 
+        { !sidebar &&
+          <button
+            className={`
+              p-2
+              rounded-full
+              transition
+              duration-200
+              hover:ease-in-out
+              ${screenSize.width <= 640 && 'me-16'}
+              ${themeStyle.hover.bgColor}
+              ${themeStyle.hover.bgOpacity}
+            `}
+            onClick={ toggleTheme }
+          >
+            { 
+              themeIcon 
+            }
+          </button>
+        }
         { NavItem }
       </div>
     </header>
