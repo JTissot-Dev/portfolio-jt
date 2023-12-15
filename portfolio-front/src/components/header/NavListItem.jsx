@@ -13,6 +13,7 @@ const NavListItem = ({children}) => {
         px-4
         rounded-full
         font-semibold
+        text-lg
         transition
         duraction-200
         hover:ease-in-out

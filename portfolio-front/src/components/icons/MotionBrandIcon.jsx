@@ -1,29 +1,78 @@
+import { motion } from "framer-motion"
 import { useStateContext } from "../../context/ContextProvider"
 
-const BrandIcon = ({style}) => {
+const MotionBrandIcon = ({style}) => {
 
-  const {themeStyle} = useStateContext();
+  const {themeStyle, theme} = useStateContext();
+
+  const fillStyle = {
+    hidden: theme === 'Dark' ? "rgba(202, 138, 4, 0)" : "rgba(4, 120, 87, 0)",
+    visible: theme === 'Dark' ? "rgba(202, 138, 4, 1)": "rgba(4, 120, 87, 1)"
+  }
+
+  console.log(fillStyle)
+
+  const icon = {
+    hidden: {
+      opacity: 0,
+      pathLength: 0,
+      fill: fillStyle.hidden
+    },
+    visible: {
+      opacity: 1,
+      pathLength: 1.1,
+      fill: fillStyle.visible
+    }
+  }
 
   return (
-    <svg
-      className={style.opacity}
+    <motion.svg
+      className={`
+        ${style.opacity}
+        item
+      `}
+      stroke={ themeStyle.svgColor }
+      strokeWidth="2"
       width={style.width} 
       height={style.height} 
       viewBox="0 0 300 300" 
-      fill="none" 
       xmlns="http://www.w3.org/2000/svg">
-      <path 
+      <motion.path 
         d="M162.754 49.5C160.087 48.3333 157.504 47.75 155.004 47.75C152.504 47.75 150.004 49.3333 147.504 52.5C145.004 55.6667 143.337 60.25 142.504 66.25L130.004 153.75C151.004 144.583 164.421 137.75 170.254 133.25L179.754 149.75C174.754 153.583 168.754 157 161.754 160C154.754 163 148.004 165.833 141.504 168.5C135.004 171 130.171 172.917 127.004 174.25L118.754 232.75C116.587 248.75 110.837 260.5 101.504 268C92.3372 275.667 82.1706 279.5 71.0039 279.5C60.0039 279.5 51.2539 275.417 44.7539 267.25C38.2539 259.25 35.0039 250.25 35.0039 240.25C35.0039 214.083 54.1706 190.833 92.5039 170.5L95.0039 150.25C98.1706 121.583 101.421 96.6667 104.754 75.5C95.2539 79.3333 85.2539 81.25 74.7539 81.25C64.4206 81.25 56.0039 78.4167 49.5039 72.75C43.1706 67.0833 40.0039 59.6667 40.0039 50.5C40.0039 41.3333 43.2539 34.1667 49.7539 29C56.4206 23.6667 64.7539 21 74.7539 21C80.9206 21 89.7539 22.9167 101.254 26.75C112.921 30.5833 121.921 32.5 128.254 32.5C139.587 32.5 149.087 29.5833 156.754 23.75C160.921 29.5833 163.004 36.5 163.004 44.5C163.004 46.1667 162.921 47.8333 162.754 49.5ZM64.7539 57.25C64.7539 59.75 66.0872 61.9167 68.7539 63.75C71.5872 65.5833 75.7539 66.5 81.2539 66.5C86.9206 66.5 94.2539 64 103.254 59C96.7539 57.5 90.0872 55.8333 83.2539 54C76.4206 52 72.3372 51 71.0039 51C66.8372 51 64.7539 53.0833 64.7539 57.25ZM89.7539 192.25C65.9206 206.583 54.0039 221.75 54.0039 237.75C54.0039 242.25 55.1706 246.083 57.5039 249.25C60.1706 252.917 63.5039 254.75 67.5039 254.75C71.6706 254.75 75.2539 253.5 78.2539 251C81.2539 248.5 83.0872 244.5 83.7539 239L89.7539 192.25Z" 
-        fill={ themeStyle.svgColor }
+        variants={icon}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          default: { duration: 1.5, ease: "easeInOut" },
+          fill: { duration: 1.5, ease: [1, 0, 0.8, 1] }
+        }}
       />
-        <circle cx="245" cy="36" r="15" fill={ themeStyle.svgColor }/>
-        <circle cx="202" cy="36" r="15" fill={ themeStyle.svgColor }/>
-      <path 
+        <motion.circle cx="245" cy="36" r="15" variants={icon}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          default: { duration: 1.5, ease: "easeInOut" },
+          fill: { duration: 1.5, ease: [1, 0, 0.8, 1] }
+        }}/>
+        <motion.circle cx="202" cy="36" r="15" variants={icon}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          default: { duration: 1.5, ease: "easeInOut" },
+          fill: { duration: 1.5, ease: [1, 0, 0.8, 1] }
+        }}/>
+      <motion.path 
         d="M199 119.5C195.5 127.167 190.333 133.5 183.5 138.5C176.667 143.5 169.25 146 161.25 146C153.25 146 146.667 143.667 141.5 139C136.5 134.333 134 127.417 134 118.25C134 109.083 138.083 102.083 146.25 97.25C154.417 92.25 164 89.75 175 89.75H274.25C274.75 92.0833 275 94.3333 275 96.5C275 102.167 273.167 107.417 269.5 112.25C265.833 117.083 260.25 119.5 252.75 119.5C252.417 119.5 252.167 119.5 252 119.5H199ZM166.5 119.5C160.333 119.5 157.25 121.667 157.25 126C157.25 129.5 159.917 131.25 165.25 131.25C167.75 131.25 170.667 130.167 174 128C177.5 125.833 180.417 123 182.75 119.5H166.5ZM218.25 232C214.083 264.667 199.333 281 174 281C165 281 157.75 278.25 152.25 272.75C146.917 267.25 144.25 260.333 144.25 252C144.25 232.5 159.083 215.833 188.75 202L197.5 135.5C204.333 131.167 212.25 129 221.25 129C225.417 129 229.417 129.417 233.25 130.25L218.25 232ZM186 223.25C170.5 232.25 162.75 240.917 162.75 249.25C162.75 255.25 165.667 258.25 171.5 258.25C178.167 258.25 182.333 251.833 184 239L186 223.25Z" 
-        fill={ themeStyle.svgColor }
+        variants={icon}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          default: { duration: 1.5, ease: "easeInOut" },
+          fill: { duration: 1.5, ease: [1, 0, 0.8, 1] }
+        }}
       />
-    </svg>
+    </motion.svg>
   )
 }
 
-export default BrandIcon
+export default MotionBrandIcon

@@ -2,7 +2,6 @@ import { motion, useCycle } from "framer-motion"
 import useDimensions from "../../customHooks/useDimensions"
 import NavToggle from "../NavToggle"
 import NavSideBar from "./NavSideBar"
-import { useState } from "react"
 import { useStateContext } from "../../../context/ContextProvider"
 
 
@@ -16,7 +15,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: "circle(21px at 261px 32px)",
+    clipPath: "circle(21px at 261px 38px)",
     transition: {
       delay: 0.5,
       type: "spring",
@@ -47,12 +46,14 @@ const SideBar = () => {
     >
       <motion.div 
         className={`
-          absolute
+          fixed
           top-0
           bottom-0
           right-0
           w-[300px]
-          bg-opacity-70
+          bg-opacity-60
+          backdrop-blur-lg
+          z-10
           ${themeStyle.bgSecondary}
         `}
         variants={sidebar} 

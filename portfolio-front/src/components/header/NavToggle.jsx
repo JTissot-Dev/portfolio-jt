@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"
 import { useStateContext } from "../../context/ContextProvider"
-import useDimensions from "../customHooks/useDimensions";
 
 
 const Path = (props) => {
@@ -24,14 +23,14 @@ const NavToggle = ({ toggleNavBar }) => {
     <button 
       className={`
         fixed
-        top-2.5
+        top-3.5
         right-4
         ms-4
         ps-[13px]
         pe-[12px]
         pb-[10px]
-        pt-[14px]
-        z-50
+        pt-[14.5px]
+        z-40
       `}
       onClick={ toggleNavBar }
     >

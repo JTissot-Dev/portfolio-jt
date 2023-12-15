@@ -4,6 +4,7 @@ import NavBar from "./NavBar"
 import BrandIcon from "../icons/BrandIcon"
 import DarkThemeIcon from "../icons/DarkThemeIcon"
 import LightThemeIcon from "../icons/LightThemeIcon"
+import { useEffect } from "react"
 
 
 const Header = () => {
@@ -28,11 +29,11 @@ const Header = () => {
   const NavItem = screenSize.width > 640 &&
     <NavBar />
 
-  if (screenSize.width > 640) {
-    setSideBar(false);
-  }
-
-  console.log(sidebar)
+    useEffect(() => {
+      if (screenSize.width > 640) {
+        setSideBar(false);
+      }
+    }, [NavItem])
 
   return (
     <header
@@ -42,13 +43,24 @@ const Header = () => {
        flex
        justify-between
        items-center
-       z-50
+       z-30
        h-16
        w-full
-       px-3
+       pt-3
+       sm:pt-5
+       px-3 
+       sm:px-5
+       md:px-7
+       lg:px-10
       "
     >
-      <BrandIcon />
+      <BrandIcon 
+        style={{
+          width: 50,
+          height: 50,
+          opacity: 'opacity-80'
+        }}
+      />
       <div
         className="
           flex

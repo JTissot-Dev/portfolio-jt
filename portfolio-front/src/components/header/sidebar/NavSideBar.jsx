@@ -21,10 +21,11 @@ const NavSideBar = () => {
   return (
     <motion.ul 
       className="
-        absolute
+        fixed
         top-[100px]
         right-0
         w-[300px]
+        z-20
       "
       variants={variants}
     >
@@ -35,16 +36,16 @@ const NavSideBar = () => {
           <span className="ms-4">Home</span>
       </NavItem>
       <NavItem>
-          <ProjectIcon 
-            style="ms-2 w-6 h-6"
-          />
-          <span className="ms-4">Projects</span>
+        <InfoIcon 
+              style="ms-2 w-6 h-6"
+            />
+            <span className="ms-4">About</span>
       </NavItem>
       <NavItem>
-          <InfoIcon 
-            style="ms-2 w-6 h-6"
-          />
-          <span className="ms-4">Info</span>
+        <ProjectIcon 
+          style="ms-2 w-6 h-6"
+        />
+      <span className="ms-4">Projects</span>
       </NavItem>
       <NavItem>
         <ContactIcon 
