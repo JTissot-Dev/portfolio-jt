@@ -2,7 +2,7 @@ import { useStateContext } from "../../context/ContextProvider"
 import useDimensions from "../customHooks/useDimensions"
 
 
-const SkillsCard = ({icon, title, children}) => {
+const SkillsCard = ({icon, title, children, technos}) => {
   
   const {themeStyle} = useStateContext();
   const screenSize = useDimensions();
@@ -11,11 +11,15 @@ const SkillsCard = ({icon, title, children}) => {
     <article
       className={`
         px-2
+        my-1
+        md:my-0
         ${screenSize.width < 768 ? 'py-4' : 'py-8'}
-        bg-opacity-10
-        rounded-lg
+        bg-opacity-70
+        rounded-3xl
         w-full
-        ${themeStyle.bgSecondary}
+        border
+        border-opacity-20
+        ${themeStyle.borderTertiary}
       `}
     >
       <div
@@ -25,11 +29,11 @@ const SkillsCard = ({icon, title, children}) => {
           mx-3
           pb-3
           font-semibold
-          text-opacity-60
+          text-opacity-80
           border-b
-          border-opacity-60
-          ${themeStyle.borderSecondary}
-          ${themeStyle.textColor}
+          border-opacity-20
+          ${themeStyle.borderTertiary}
+          ${themeStyle.textTertiary}
         `}
       >
         { icon }
@@ -39,14 +43,39 @@ const SkillsCard = ({icon, title, children}) => {
           "
         >{ title }</span>
       </div>
+      <ul
+        className="
+          flex
+          items-center
+          mt-3
+          mb-2
+          mx-3
+        "
+      >
+        {
+          technos &&
+            technos.map((techno, index) => {
+              return (
+                <li 
+                  key={index}
+                  className="
+                    mr-3
+                  "
+                >
+                  { techno }
+                </li>
+              )
+            })
+        }
+      </ul>
       <p
         className={`
           px-3
-          ${screenSize.width < 768 ? 'pt-3' : 'pt-8'}
           pb-3
-          text-opacity-60
+          text-opacity-70
           text-sm
           whitespace-pre-line
+          leading-5
           ${themeStyle.textTertiary}
         `}
       >

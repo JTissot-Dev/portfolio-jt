@@ -1,5 +1,5 @@
-import { useRef } from "react"
-import { motion, useScroll, scroll, progress } from "framer-motion"
+import { useState, useRef, useEffect } from "react"
+import { motion, useScroll, scroll, } from "framer-motion"
 import { useStateContext } from "./context/ContextProvider"
 import Header from "./components/header/Header"
 import SideBar from "./components/header/sidebar/SideBar"
@@ -7,66 +7,97 @@ import useDimensions from "./components/customHooks/useDimensions"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Projects from "./pages/Projects"
+import Contact from "./pages/Contact"
 
 
 function App() {
 
   
-  const {theme, themeStyle, setActiveLink} = useStateContext();
+  const {theme, themeStyle, sidebar} = useStateContext();
+  const [headerScroll, setHeaderScroll] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(null);
   const screenSize = useDimensions();
   const { scrollYProgress } = useScroll();
   const body = document.getElementById('root');
+  const headerRef = useRef();
   
   if (theme === 'Dark') {
     body.className = 'background-dark';
   } else {
     body.className = 'background-light';
   }
-
+  console.log(headerHeight)
   scroll((progress) => {
-    switch(progress) {
-      case 0:
-        return setActiveLink('Home');
-      case 0.5:
-        return setActiveLink('Skills');
-      case 1:
-        return setActiveLink('Projects');
+    if (progress > 0) {
+      setHeaderScroll(true);
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.clientHeight);
+      }
+      
+    } else {
+      setHeaderScroll(false);
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.clientHeight);
+
+      }
     }
+
   })
 
   return (
     <div
       className={`
-        ${theme === 'Light' ? 'bg-grid-light' : 'bg-grid-dark'}
         min-w-screen
         min-h-screen
-        z-10
+        md:pb-10
       `}
     >
-      <Header />
-      <motion.div
-        className={`
-          fixed
-          bottom-10
-          right-0
-          left-0
-          mx-10
-          h-2
-          rounded-full
-          bg-opacity-50
-          ${themeStyle.bgSecondary}
-        `}
-          
-        style={{ scaleX: scrollYProgress }}
-      />
       {
-        screenSize.width < 640 &&
-          <SideBar />
+        sidebar &&
+          <div 
+            className="
+              fixed
+              top-0
+              bottom-0
+              right-0
+              left-0
+              backdrop-blur
+              z-30
+            "
+          >
+        </div>
+      }
+      <Header 
+        headerRef={ headerRef } 
+        headerScroll={ headerScroll }
+      />
+      { headerHeight === 60 &&
+          <motion.div
+            className={`
+              fixed
+              top-[60px]
+              left-0
+              right-0
+              h-[1px]
+              rounded-full
+              bg-opacity-50
+              z-20
+              ${themeStyle.bgTertiary}
+            `}
+            
+          style={{ scaleX: scrollYProgress }}
+        />
+      }
+
+      {
+        screenSize.width < 768 &&
+          <SideBar headerScroll={ headerScroll }/>
       }
       <div
         className="
           snap-y
           container
+          md:w-11/12
           mx-auto
           px-0
           sm:px-5
@@ -78,6 +109,7 @@ function App() {
         <Home />
         <About />
         <Projects />
+        <Contact />
       </div>
     </div>
   )

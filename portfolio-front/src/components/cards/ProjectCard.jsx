@@ -9,21 +9,29 @@ const ProjectCard = ({
   title, 
   children,
   technos,
-  date}) => {
+  date,
+  url}) => {
   
   const {themeStyle} = useStateContext();
   const screenSize = useDimensions();
 
   return (
-    <motion.button
+    <motion.a
+      href={ url }
+      target="_blank"
       className={`
+        mb-6
+        md:my-0
         px-2
         ${screenSize.width < 768 ? 'py-4' : 'py-8'}
-        bg-opacity-10
-        rounded-lg
+        bg-opacity-70
+        rounded-3xl
         w-full
         hover:cursor-pointer
-        ${themeStyle.bgSecondary}
+        border
+        border-opacity-20
+        ${themeStyle.borderTertiary}
+        
       `}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
@@ -38,17 +46,15 @@ const ProjectCard = ({
           mb-2
           font-semibold
           text-lg
-          text-opacity-60
+          text-opacity-90
           border-b
-          border-opacity-60
-          ${themeStyle.borderSecondary}
-          ${themeStyle.textColor}
+          border-opacity-20
+          ${themeStyle.borderTertiary}
+          ${themeStyle.textTertiary}
         `}
       >
         <span>{ title }</span>
-        <a>
-          <LinkIcon style="w-6 h-6 mb-1.5"/>
-        </a>
+        <LinkIcon style="w-6 h-6 mb-1.5"/>
       </div>
       <div
         className="
@@ -62,7 +68,7 @@ const ProjectCard = ({
           style={`
             w-[18px]
             h-[18px]
-            text-opacity-60
+            text-opacity-90
             ${ themeStyle.textTertiary }
           `}
         />
@@ -71,7 +77,7 @@ const ProjectCard = ({
             w-[18px]
             h-[18px]
             text-[14px]
-            text-opacity-60
+            text-opacity-90
             ms-3
             ${ themeStyle.textTertiary }
           `}
@@ -83,20 +89,21 @@ const ProjectCard = ({
         className={`
           mx-3
           pb-6
-          text-opacity-60
+          text-opacity-70
           text-sm
           text-start
           whitespace-pre-line
           border-b
-          border-opacity-60
-          ${screenSize.width < 768 ? 'pt-2' : 'pt-8'}
-          ${themeStyle.borderSecondary}
+          border-opacity-20
+          pt-2
+          leading-relaxed
+          ${themeStyle.borderTertiary}
           ${themeStyle.textTertiary}
         `}
       >
         { children }
       </p>
-      <div
+      <ul
         className="
           pt-4
           mx-3
@@ -105,17 +112,24 @@ const ProjectCard = ({
         "
       >
         {
-          technos.map(techno => {
+          technos.map((techno, index) => {
             return (
-              <TechWrap>
-                { techno }
-              </TechWrap>
+              <li 
+                key={ index }
+                className="
+                  my-[4px]
+                "
+              >
+                <TechWrap>
+                  { techno }
+                </TechWrap>
+              </li>
             )
           } )   
         }
         
-      </div>
-    </motion.button>
+      </ul>
+    </motion.a>
   )
 }
 

@@ -12,15 +12,12 @@ const NavListItem = ({children}) => {
         py-2
         px-4
         rounded-full
-        font-semibold
-        text-lg
         transition
-        duraction-200
+        duraction-100
         hover:ease-in-out
         hover:cursor-pointer
-        ${themeStyle.textColor}
-        ${themeStyle.hover.bgColor}
-        ${themeStyle.hover.bgOpacity}
+        ${themeStyle.textTertiary}
+        ${themeStyle.hover.textColor}
       `}
   >
     { children }

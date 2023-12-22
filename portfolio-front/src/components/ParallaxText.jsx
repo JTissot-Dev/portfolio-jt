@@ -10,10 +10,19 @@ import {
   wrap
 } from "framer-motion"
 import { useStateContext } from "../context/ContextProvider"
+import useDimensions from "./customHooks/useDimensions"
+import JavaScriptIcon from "./icons/JavaScriptIcon"
+import ReactIcon from "./icons/ReactIcon"
+import TailwindIcon from "./icons/TailwindIcon"
+import BootstrapIcon from "./icons/BootstrapIcon"
+import PythonIcon from "./icons/PythonIcon"
+import PhpIcon from "./icons/PhpIcon"
+import PostgresIcon from "./icons/PostgresIcon"
 
 
-const ParallaxText = ({ children, baseVelocity = 100 }) => {
+const ParallaxText = ({ baseVelocity = 100 }) => {
   const {themeStyle} = useStateContext();
+  const screenSize = useDimensions();
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -25,21 +34,14 @@ const ParallaxText = ({ children, baseVelocity = 100 }) => {
     clamp: false,
   });
 
-  /**
-   * This is a magic wrapping for the length of the text - you
-   * have to replace for wrapping that works for you or dynamically
-   * calculate
-   */
+
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
   const directionFactor = useRef(1);
   useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-    /**
-     * This is what changes the direction of the scroll once we
-     * switch scrolling directions.
-     */
+
     if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
     } else if (velocityFactor.get() > 0) {
@@ -51,25 +53,40 @@ const ParallaxText = ({ children, baseVelocity = 100 }) => {
     baseX.set(baseX.get() + moveBy);
   });
 
-  /**
-   * The number of times to repeat the child text should be dynamically calculated
-   * based on the size of the text and viewport. Likewise, the x motion value is
-   * currently wrapped between -20 and -45% - this 25% is derived from the fact
-   * we have four children (100% / 4). This would also want deriving from the
-   * dynamically generated number of children.
-   */
+  const iconSize = () => {
+    if (screenSize.width <= 640) {
+      return "42";
+    } else if (screenSize.width > 640 && screenSize.width < 768 ) {
+      return "43";
+    } else if (screenSize.width > 768 && screenSize.width < 1024 ) {
+      return "44";
+    } else if (screenSize.width > 1024 && screenSize.width < 1280 ) {
+      return "45";
+    } else if (screenSize.width > 1280 && screenSize.width < 1536 ) {
+      return "46";
+    } else if (screenSize.width >= 1536 ) {
+      return "47";
+    }
+  };
+
+  const iconStyle = {
+    width: iconSize(),
+    height: 55,
+    fill: themeStyle.svgTertiary,
+    opacity: 'opacity-80'
+  };
+
   return (
     <div 
-      className="
+      className={`
         parallax
         mx-5
         mt-5
-      "
+      `}
     >
       <motion.div 
         className={`
           scroller 
-          custom-font
           text-opacity-50
           text-[50px]
           sm:text-[52px]
@@ -77,22 +94,37 @@ const ParallaxText = ({ children, baseVelocity = 100 }) => {
           lg:text-[75px]
           ${themeStyle.textTertiary}
         `}
-        
-        
         style={{ x }}
       >
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
+        {
+          Array.from({ length: 20 }).map((v, i) => {
+            return (
+              <>
+                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                  <JavaScriptIcon style={iconStyle} />
+                </span>
+                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                  <ReactIcon style={iconStyle} />
+                </span>
+                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                  <TailwindIcon style={iconStyle} />
+                </span>
+                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                  <BootstrapIcon style={iconStyle} />
+                </span>
+                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                  <PythonIcon style={iconStyle} />
+                </span>
+                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                  <PhpIcon style={iconStyle} />
+                </span>
+                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                  <PostgresIcon style={iconStyle} />
+                </span>
+              </>
+            )
+          }) 
+        }       
       </motion.div>
     </div>
   );

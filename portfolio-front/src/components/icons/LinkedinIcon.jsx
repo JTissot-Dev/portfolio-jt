@@ -2,8 +2,8 @@ const LinkedinIcon = ({style}) => {
   return (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
-    width={ style.height } 
-    height={ style.width } 
+    width={ style.width } 
+    height={ style.height } 
     fill={ style.fill }  
     className={ style.opacity } 
     viewBox="0 0 16 16">

@@ -1,8 +1,6 @@
-import * as React from "react"
 import { motion } from "framer-motion"
-import { Link } from 'react-scroll'
 import { useStateContext } from "../../../context/ContextProvider"
-import HomeIcon from "../../icons/HomeIcon"
+
 
 const variants = {
   open: {
@@ -28,24 +26,17 @@ const NavItem = ({children}) => {
   return (
     <motion.li
       className={`
+        flex
+        items-center
         text-center
-        text-lg
-        font-semibold
         p-4
         hover:cursor-pointer
-        ${themeStyle.textSecondary}
+        ${themeStyle.textTertiary}
         ${themeStyle.hover.textColor}
       `}
       variants={variants}
     >
-      <Link
-        className="
-          flex
-          items-center
-        "
-      >
-        { children }
-      </Link>
+      { children }
     </motion.li>
   );
 };

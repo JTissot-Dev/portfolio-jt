@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { useStateContext } from "../../context/ContextProvider"
 import useDimensions from "../customHooks/useDimensions"
 import NavBar from "./NavBar"
@@ -7,7 +8,7 @@ import LightThemeIcon from "../icons/LightThemeIcon"
 import { useEffect } from "react"
 
 
-const Header = () => {
+const Header = ({headerRef, headerScroll}) => {
 
   const {
     theme, 
@@ -20,44 +21,65 @@ const Header = () => {
 
   const themeIcon = theme === 'Dark' ?
     <LightThemeIcon 
-      style={`w-7 h-7 ${themeStyle.textColor}`}
+      style={`
+        w-7 h-7 
+        transition
+        duration-100
+        hover:ease-in-out
+        ${themeStyle.textTertiary}
+        ${themeStyle.hover.textColor}
+      `}
     /> :
     <DarkThemeIcon 
-      style={`w-7 h-7 ${themeStyle.textColor}`}
+      style={`
+      w-7 h-7 
+      transition
+      duration-100
+      hover:ease-in-out
+      ${themeStyle.textTertiary}
+      ${themeStyle.hover.textColor}
+    `}
     />
   
-  const NavItem = screenSize.width > 640 &&
+  const NavItem = screenSize.width > 768 &&
     <NavBar />
 
     useEffect(() => {
-      if (screenSize.width > 640) {
+      if (screenSize.width > 768) {
         setSideBar(false);
       }
     }, [NavItem])
 
   return (
-    <header
-      className="
-       fixed
-       top-0
-       flex
-       justify-between
-       items-center
-       z-30
-       h-16
-       w-full
-       pt-3
-       sm:pt-5
-       px-3 
-       sm:px-5
-       md:px-7
-       lg:px-10
-      "
+    <motion.header
+      ref={ headerRef }
+      className={`
+        fixed
+        top-0
+        flex
+        justify-between
+        items-center
+        z-20
+        h-[100px]
+        w-full
+        px-3 
+        sm:px-5
+        md:px-7
+        lg:px-14
+        ${
+          headerScroll ? 
+            "backdrop-blur-md shadow-sm " + themeStyle.shadowColor : 
+            ""
+        }
+      `}
+      animate={{
+        height: headerScroll ? 60 : 100,
+      }}
     >
       <BrandIcon 
         style={{
-          width: 50,
-          height: 50,
+          width: 55,
+          height: 55,
           opacity: 'opacity-80'
         }}
       />
@@ -72,12 +94,7 @@ const Header = () => {
             className={`
               p-2
               rounded-full
-              transition
-              duration-200
-              hover:ease-in-out
-              ${screenSize.width <= 640 && 'me-16'}
-              ${themeStyle.hover.bgColor}
-              ${themeStyle.hover.bgOpacity}
+              ${screenSize.width <= 768 && 'me-12'}
             `}
             onClick={ toggleTheme }
           >
@@ -88,7 +105,7 @@ const Header = () => {
         }
         { NavItem }
       </div>
-    </header>
+    </motion.header>
   )
 
   function toggleTheme() {

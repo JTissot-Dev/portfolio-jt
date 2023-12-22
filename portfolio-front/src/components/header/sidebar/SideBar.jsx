@@ -15,9 +15,9 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: "circle(21px at 261px 38px)",
+    clipPath: "circle(21px at 280px 40px)",
     transition: {
-      delay: 0.5,
+      delay: 0.3,
       type: "spring",
       stiffness: 400,
       damping: 40,
@@ -25,7 +25,7 @@ const sidebar = {
   },
 }
 
-const SideBar = () => {
+const SideBar = ({headerScroll}) => {
   const {themeStyle, setSideBar} = useStateContext();
   const [isOpen, toggleOpen] = useCycle(false, true);
   const screenSize = useDimensions();
@@ -41,7 +41,7 @@ const SideBar = () => {
         top-0
         bottom-0
         right-0
-        w-[300px]
+        w-[250px]
       " 
     >
       <motion.div 
@@ -50,24 +50,39 @@ const SideBar = () => {
           top-0
           bottom-0
           right-0
-          w-[300px]
-          bg-opacity-60
+          w-[250px]
+          bg-opacity-90
           backdrop-blur-lg
-          z-10
-          ${themeStyle.bgSecondary}
+          z-30
+          ${themeStyle.bgColor}
         `}
         variants={sidebar} 
       />
       <NavSideBar />
-      <NavToggle toggleNavBar={ handleSideBard } />
+      <motion.div
+        className="
+          flex
+          items-center
+          h-[100px]
+          fixed
+          top-0
+          right-0
+          z-40
+        "
+        animate={{
+          height: headerScroll ? 60 : 100,
+        }}
+      >
+        <NavToggle 
+          toggleNavBar={ handleSideBard } 
+        />
+      </motion.div>
     </motion.nav>
   );
 
   function handleSideBard() {
     toggleOpen();
-
-      setSideBar(prev => !prev);
-
+    setSideBar(prev => !prev);
   }
 }
 

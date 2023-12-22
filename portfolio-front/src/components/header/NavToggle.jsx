@@ -10,26 +10,20 @@ const Path = (props) => {
   <motion.path
       fill="transparent"
       strokeWidth="3"
-      stroke={ themeStyle.svgSecondary }
+      stroke={ themeStyle.svgTertiary }
       strokeLinecap="round"
       {...props}
     />
   )
 }
 
-const NavToggle = ({ toggleNavBar }) => {
+const NavToggle = ({toggleNavBar}) => {
 
   return (
     <button 
       className={`
-        fixed
-        top-3.5
-        right-4
-        ms-4
-        ps-[13px]
-        pe-[12px]
-        pb-[10px]
-        pt-[14.5px]
+        me-5
+        mt-1
         z-40
       `}
       onClick={ toggleNavBar }

@@ -1,7 +1,7 @@
 const coopImmoGestion = {
   title: "CoopImmoGestion",
   date: "2023",
-  description: "CoopImmoGestion is a web application allowing to make rental management, and have been developed as part of my training as a ''Concepteur, développeur de solutions digitales''.",
+  description: "CoopImmoGestion est une application de gestion locative développée au cours de ma formation au titre de concepteur, développeur de solutions digitales.",
   technos:[
     'Python',
     'Flask',

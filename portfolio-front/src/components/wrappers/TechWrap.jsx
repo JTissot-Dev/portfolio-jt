@@ -3,7 +3,7 @@ import { useStateContext } from "../../context/ContextProvider"
 
 const TechWrap = ({children}) => {
 
-  const {themeStyle} = useStateContext();
+  const {themeStyle, theme} = useStateContext();
 
   return (
     <span
@@ -11,14 +11,16 @@ const TechWrap = ({children}) => {
         py-1
         px-3
         me-[6px]
-        my-[4px]
-        bg-opacity-10
+        bg-opacity-90
         font-medium
-        text-opacity-80
+        text-opacity-90
         text-[12px]
         rounded-full
-        ${themeStyle.bgTertiary}
-        ${themeStyle.textTertiary}
+        ${themeStyle.bgSecondary}
+        ${ theme === 'dark' ?
+          themeStyle.textTertiary :
+          "text-stone-50"
+        }
       `}
     >
       { children }

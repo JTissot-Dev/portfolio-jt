@@ -1,25 +1,8 @@
-import { Link, Events } from 'react-scroll'
+import { Link } from 'react-scroll'
 import NavListItem from './NavListItem'
-import { useStateContext } from '../../context/ContextProvider'
-import { useEffect } from 'react';
 
 
 const NavBar = () => {
-
-  const {setActiveLink} = useStateContext();
-
-  useEffect(() => {
-    Events.scrollEvent.register('end', activeLink => {
-      setActiveLink(activeLink);
-    });
-
-    return () => {
-      Events.scrollEvent.remove('begin');
-      Events.scrollEvent.remove('end');
-    };
-    
-  })
-  
 
   return (
     <nav>
@@ -34,10 +17,10 @@ const NavBar = () => {
             activeClass="active" 
             to="Home" 
             spy={true} 
-            smooth={true} 
+            smooth={true}
             duration={500}
           >
-            Home
+            Accueil
           </Link>
         </NavListItem>
         <NavListItem>
@@ -46,9 +29,10 @@ const NavBar = () => {
             to="Skills" 
             spy={true} 
             smooth={true} 
+            offset={-80}
             duration={500}
           >
-            About
+            Compétences
           </Link>
           </NavListItem>
         <NavListItem>
@@ -57,13 +41,21 @@ const NavBar = () => {
             to="Projects" 
             spy={true} 
             smooth={true} 
+            offset={-80}
             duration={500}
           >
-            Projects
+            Projets
           </Link>
           </NavListItem>
         <NavListItem>
-          <Link>
+          <Link
+            activeClass="active" 
+            to="Contact" 
+            spy={true} 
+            smooth={true} 
+            offset={-80}
+            duration={500}
+          >
             Contact
           </Link>
         </NavListItem>
