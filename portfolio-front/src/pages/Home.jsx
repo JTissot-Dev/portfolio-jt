@@ -247,8 +247,8 @@ const Home = () => {
               justify-center
               rounded-[17%]
               md:w-[270px]
-              lg:w-[320px]
-              xl:w-[350px]
+              lg:w-[310px]
+              xl:w-[332px]
               ${ 
                 isOpenDetail ? 
                   "border " + 

@@ -85,11 +85,14 @@ const Contact = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:5173"
+        "Access-Control-Allow-Origin": import.meta.env.VITE_API_BASE_URL
       },
       body: JSON.stringify(data)
     })
     .then(() => {
+      refInputName.current.value = '';
+      refInputEmail.current.value = '';
+      refInputMessage.current.value = '';
       setToast('Success');
     })
     .catch(() => {
@@ -175,7 +178,7 @@ const Contact = () => {
           className={`
             text-[25px] 
             text-center 
-            mb-8
+            mb-9
             md:text-[35px] 
             lg:text-[40px] 
             text-opacity-90

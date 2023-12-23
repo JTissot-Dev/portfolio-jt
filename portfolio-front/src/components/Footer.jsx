@@ -1,8 +1,4 @@
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import useDimensions from "./customHooks/useDimensions"
 import { useStateContext } from "../context/ContextProvider"
-import ContactWrap from "./wrappers/ContactWrap"
 import GitHubIcon from "./icons/GitHubIcon"
 import LinkedinIcon from "./icons/LinkedinIcon"
 import MailIcon from "./icons/MailIcon"
@@ -10,12 +6,11 @@ import MailIcon from "./icons/MailIcon"
 
 const Footer = () => {
 
-  const screenSize = useDimensions();
   const {themeStyle} = useStateContext();
 
   const iconStyle = {
-    width: screenSize.width < 1024 ? 18 : 20,
-    height: screenSize.width < 1024 ? 18 : 20,
+    width: 30,
+    height: 30,
     fill: themeStyle.svgTertiary,
     opacity: 'opacity-100'
   };
@@ -38,52 +33,34 @@ const Footer = () => {
           mt-16
         "
       >
-        <div
-          className="mx-1"
+        <a
+          className="mx-4"
+          href="https://github.com/JTissot-Dev"
         >
-          <ContactWrap
-            icon={
-              <GitHubIcon  
-                style={ iconStyle }
-              />
-            }
-            path="https://github.com/JTissot-Dev"
-          >
-            GitHub
-          </ContactWrap>
-        </div>
-        <div
-          className="mx-1"
+            <GitHubIcon 
+              style={ iconStyle }
+            />
+        </a>
+        <a
+          className="mx-4"
+          href="https://www.linkedin.com/in/j%C3%A9r%C3%B4me-tissot-616514292/"
         >
-          <ContactWrap
-            icon={
-              <LinkedinIcon  
-                style={ iconStyle }
-              />
-            }
-            path="https://www.linkedin.com/in/j%C3%A9r%C3%B4me-tissot-616514292/"
-          >
-            Linkedin
-          </ContactWrap>
-        </div>
-        <div
-          className="mx-1"
+            <LinkedinIcon  
+              style={ iconStyle }
+            />
+        </a>
+        <a
+          className="mx-4"
+          href="mailto:jerome.tissot.dev@gmail.com"
         >
-          <ContactWrap
-            icon={
-              <MailIcon 
-                style={ iconStyle }
-              />
-            }
-            path="mailto:jerome.tissot.dev@gmail.com"
-          >
-            Mailto
-          </ContactWrap>
-        </div>
+            <MailIcon   
+              style={ iconStyle }
+            />
+        </a>
       </div>
       <div
         className={`
-          mt-7
+          mt-8
           ${themeStyle.textTertiary}
           text-lg
           text-opacity-90

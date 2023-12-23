@@ -11,6 +11,7 @@ const SendSuccessToast = ({ setToast }) => {
   return (
     <div 
       className={`
+        z-50
         flex 
         items-center 
         w-full 
