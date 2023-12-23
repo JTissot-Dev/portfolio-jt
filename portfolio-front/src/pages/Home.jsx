@@ -2,7 +2,7 @@ import { useRef, useState } from "react"
 import { Element } from "react-scroll"
 import { motion, useInView, useCycle } from "framer-motion"
 import { useStateContext } from "../context/ContextProvider"
-import ProfileInfo from "../components/profileInfos/profileInfo"
+import ProfileInfos from "../components/profileInfos/ProfileInfos"
 import useDimensions from "../components/customHooks/useDimensions"
 import ContactWrap from "../components/wrappers/ContactWrap"
 import LinkedinIcon from "../components/icons/LinkedinIcon"
@@ -300,7 +300,7 @@ const Home = () => {
             </motion.button> 
             {
               isOpenDetail &&
-                <ProfileInfo />
+                <ProfileInfos />
             }
             <ProfileIcon isOpenDetail={ isOpenDetail } size={ brandIconSize() }/>
           </motion.div>

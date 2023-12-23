@@ -7,7 +7,7 @@ import PhoneIcon from "../icons/PhoneIcon"
 import MailProfileIcon from "../icons/MailProfileIcon"
 
 
-const ProfileInfo = () => {
+const ProfileInfos = () => {
 
   const {themeStyle} = useStateContext();
 
@@ -76,4 +76,4 @@ const ProfileInfo = () => {
 }
 
 
-export default ProfileInfo
+export default ProfileInfos
