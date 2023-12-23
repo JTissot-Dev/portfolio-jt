@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion"
 import { useStateContext } from "../context/ContextProvider"
 import useDimensions from "../components/customHooks/useDimensions"
 import ProjectCard from "../components/cards/ProjectCard"
-import coopImmoGestion from "../projects/CoopImmoGestion"
+import coopImmoGestion from "../projects/coopImmoGestion"
 import taskPlanner from "../projects/tasksPlanner"
 
 
