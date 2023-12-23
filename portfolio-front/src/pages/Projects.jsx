@@ -1,10 +1,9 @@
-import { useState, useRef } from "react"
+import { useRef } from "react"
 import { Element } from "react-scroll"
 import { motion, useInView } from "framer-motion";
 import { useStateContext } from "../context/ContextProvider"
 import useDimensions from "../components/customHooks/useDimensions"
 import ProjectCard from "../components/cards/ProjectCard"
-import taskPlanner from "../projects/TaskPlanner"
 import coopImmoGestion from "../projects/CoopImmoGestion"
 
 
