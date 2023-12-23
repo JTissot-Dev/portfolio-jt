@@ -23,6 +23,8 @@ const NavToggle = ({toggleNavBar}) => {
     <button 
       className={`
         me-5
+        sm:me-6
+        md:me-7
         mt-1
         z-40
       `}

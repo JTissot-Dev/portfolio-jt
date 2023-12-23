@@ -111,7 +111,7 @@ const NavSideBar = () => {
           to="Contact" 
           spy={true} 
           smooth={true} 
-          offset={-80}
+          offset={0}
           duration={500}
         >
         <ContactIcon 

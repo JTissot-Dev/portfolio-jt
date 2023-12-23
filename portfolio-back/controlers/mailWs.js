@@ -3,12 +3,12 @@ const transporter = require('../mail/mail.js');
 var mailRouter = express.Router();
 
 mailRouter.post('/email', async (req, res) => {
-  console.log(req.body)
+
   const { name, email, message } = req.body;
 
   let mailOptions = {
-    from: 'votre@email.com',
-    to: 'coopimmogestion@gmail.com',
+    from: email,
+    to: 'jerome.tissot.dev@gmail.com',
     subject: `Message de ${name} - ${email}`,
     text: message
   };

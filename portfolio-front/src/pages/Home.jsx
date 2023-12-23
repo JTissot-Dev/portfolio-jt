@@ -255,7 +255,7 @@ const Home = () => {
                   "border-opacity-20 " + 
                   themeStyle.borderTertiary +
                   " " + themeStyle.bgColor :
-                  ""
+                  "rounded-[17%]"
               }
             `}
             initial={{ scale: 1 }}

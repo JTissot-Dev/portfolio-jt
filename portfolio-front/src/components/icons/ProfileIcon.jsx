@@ -5,7 +5,7 @@ import { useStateContext } from "../../context/ContextProvider"
 const ProfileIcon = ({size, isOpenDetail}) => {
 
   const {theme} = useStateContext();
-  console.log(isOpenDetail)
+
   return (
     <img 
       className={`

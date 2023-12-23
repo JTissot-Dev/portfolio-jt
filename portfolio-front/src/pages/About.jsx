@@ -302,7 +302,7 @@ const About = () => {
         <motion.div
             className="
               relative
-              mt-10
+              mt-14
               w-full
             "
             initial={{ opacity: 0 }}

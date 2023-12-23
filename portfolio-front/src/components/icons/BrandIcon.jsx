@@ -6,7 +6,12 @@ const BrandIcon = ({style}) => {
 
   return (
     <svg 
-      className={style.opacity} 
+      className={`
+        ${style.opacity} 
+        ms-1 
+        sm:ms-[2px]
+        lg:ms-0
+      `} 
       width={style.width}  
       height={style.height} 
       viewBox="0 0 237 271" 

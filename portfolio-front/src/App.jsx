@@ -8,6 +8,7 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Projects from "./pages/Projects"
 import Contact from "./pages/Contact"
+import Footer from "./components/Footer"
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
   } else {
     body.className = 'background-light';
   }
-  console.log(headerHeight)
+
   scroll((progress) => {
     if (progress > 0) {
       setHeaderScroll(true);
@@ -49,7 +50,6 @@ function App() {
       className={`
         min-w-screen
         min-h-screen
-        md:pb-10
       `}
     >
       {
@@ -80,7 +80,10 @@ function App() {
               right-0
               h-[1px]
               rounded-full
-              bg-opacity-50
+              ${theme === 'Dark' ?
+                "bg-opacity-50" :
+                "bg-opacity-70"
+              }
               z-20
               ${themeStyle.bgTertiary}
             `}
@@ -110,6 +113,7 @@ function App() {
         <About />
         <Projects />
         <Contact />
+        <Footer />
       </div>
     </div>
   )

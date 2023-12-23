@@ -25,7 +25,6 @@ const Projects = () => {
     <Element
       name="Projects"
       className="
-        mt-8
         relative
         mx-5
         md:mx-0

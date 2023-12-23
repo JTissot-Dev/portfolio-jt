@@ -53,7 +53,7 @@ const NavBar = () => {
             to="Contact" 
             spy={true} 
             smooth={true} 
-            offset={-80}
+            offset={30}
             duration={500}
           >
             Contact

@@ -99,29 +99,29 @@ const ParallaxText = ({ baseVelocity = 100 }) => {
         {
           Array.from({ length: 20 }).map((v, i) => {
             return (
-              <>
-                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+              <div className="flex" key={ i }>
+                <span className="mx-5 md:mx-7 lg:mx-10">
                   <JavaScriptIcon style={iconStyle} />
                 </span>
-                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                <span className="mx-5 md:mx-7 lg:mx-10">
                   <ReactIcon style={iconStyle} />
                 </span>
-                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                <span className="mx-5 md:mx-7 lg:mx-10">
                   <TailwindIcon style={iconStyle} />
                 </span>
-                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                <span className="mx-5 md:mx-7 lg:mx-10">
                   <BootstrapIcon style={iconStyle} />
                 </span>
-                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                <span className="mx-5 md:mx-7 lg:mx-10">
                   <PythonIcon style={iconStyle} />
                 </span>
-                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                <span className="mx-5 md:mx-7 lg:mx-10">
                   <PhpIcon style={iconStyle} />
                 </span>
-                <span key={i} className="mx-5 md:mx-7 lg:mx-10">
+                <span className="mx-5 md:mx-7 lg:mx-10">
                   <PostgresIcon style={iconStyle} />
                 </span>
-              </>
+              </div>
             )
           }) 
         }       

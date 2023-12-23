@@ -65,7 +65,7 @@ const Header = ({headerRef, headerScroll}) => {
         px-3 
         sm:px-5
         md:px-7
-        lg:px-14
+        lg:px-24
         ${
           headerScroll ? 
             "backdrop-blur-md shadow-sm " + themeStyle.shadowColor : 
