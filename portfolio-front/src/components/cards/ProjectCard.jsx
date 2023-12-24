@@ -38,7 +38,11 @@ const ProjectCard = ({
         { scale: 1 } :
         { scale: 1.04 } 
       }
-      whileTap={{ scale: 0.9 }}
+      whileTap={
+        screenSize.width < 768 ?
+        { scale: 1 } :
+        { scale: 0.9 } 
+      }
     >
       <div
         className={`
