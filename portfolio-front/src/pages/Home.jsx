@@ -63,7 +63,7 @@ const Home = () => {
     >
       <div
         className="
-          pt-[120px]
+          pt-[110px]
           md:pt-[230px]
           md:pb-60
           flex
