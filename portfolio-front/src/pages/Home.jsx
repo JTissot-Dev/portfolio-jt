@@ -63,15 +63,17 @@ const Home = () => {
     >
       <div
         className="
-          h-screen
+          pt-[120px]
+          md:pt-[230px]
+          md:pb-60
           flex
           flex-col-reverse
           items-center
           justify-center
           md:flex-row
           lg:justify-around
-          pt-6
-          md:pb-7
+          
+          
         "
       >
         <div
@@ -311,8 +313,8 @@ const Home = () => {
       </div>
       <motion.div
         className={`
-          -mt-16
-          mb-10
+          mt-20
+          mb-14
           md:-mt-28
           md:mb-24
           w-full

@@ -134,7 +134,7 @@ const About = () => {
                 <BootstrapIcon style={iconStyle} />
               ]}
             >
-              Maitrise des fondamentaux HTML, CSS, JavaScript.<br/>
+              Maîtrise des fondamentaux HTML, CSS, JavaScript.<br/>
               J'utilise&#160; 
               <span 
                 className={`

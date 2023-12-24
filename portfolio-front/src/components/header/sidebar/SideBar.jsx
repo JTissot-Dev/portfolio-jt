@@ -63,14 +63,14 @@ const SideBar = ({headerScroll}) => {
         className="
           flex
           items-center
-          h-[100px]
+          h-[80px]
           fixed
           top-0
           right-0
           z-40
         "
         animate={{
-          height: headerScroll ? 60 : 90,
+          height: headerScroll ? 50 : 80,
         }}
       >
         <NavToggle 

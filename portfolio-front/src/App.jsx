@@ -71,11 +71,11 @@ function App() {
         headerRef={ headerRef } 
         headerScroll={ headerScroll }
       />
-      { headerHeight === 60 &&
+      { headerHeight === 50 &&
           <motion.div
             className={`
               fixed
-              top-[60px]
+              top-[50px]
               left-0
               right-0
               h-[1px]

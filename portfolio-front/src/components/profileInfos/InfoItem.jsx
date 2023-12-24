@@ -13,7 +13,7 @@ const InfoItem = ({children, delay}) => {
         items-center
         text-center
         p-1.5
-        text-[12px]
+        text-[11px]
         sm:text-[13px]
         md:text-[14px]
         lg:text-[16px]

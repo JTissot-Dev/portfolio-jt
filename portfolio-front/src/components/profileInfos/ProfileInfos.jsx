@@ -21,8 +21,8 @@ const ProfileInfos = () => {
     <motion.ul 
       className={`
         absolute
-        bottom-5
-        left-5
+        bottom-[16px]
+        left-[17px]
         sm:bottom-6
         sm:left-6
         lg:bottom-7
