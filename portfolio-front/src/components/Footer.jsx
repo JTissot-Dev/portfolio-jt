@@ -30,7 +30,8 @@ const Footer = () => {
           w-full
           flex
           justify-center
-          mt-16
+          mt-5
+          md:mt-12
         "
       >
         <a

@@ -20,13 +20,15 @@ const Home = () => {
   const screenSize = useDimensions();
 
   const refFour = useRef(null);
-  const isInViewFour = useInView(refFour, { once: false , margin: "0px 50px -50px 0px"});
+  const isInViewFour = useInView(refFour, { once: false , margin: "0px 10px -10px 0px"});
   const refFourH = useRef(null);
-  const isInViewFourH = useInView(refFourH, { once: false , margin: "0px 50px -50px 0px"});
+  const isInViewFourH = useInView(refFourH, { once: false , margin: "0px 10px -10px 0px"});
   const refFive = useRef(null);
-  const isInViewFive = useInView(refFive, { once: false , margin: "0px 50px -50px 0px"});
+  const isInViewFive = useInView(refFive, { once: false , margin: "0px 10px -10px 0px"});
   const refContact = useRef(null);
-  const isInViewContact = useInView(refContact, { once: false , margin: "0px 50px -50px 0px"});
+  const isInViewContact = useInView(refContact, { once: false , margin: "0px 10px -10px 0px"});
+  const refBorder = useRef(null);
+  const isInViewBorder = useInView(refBorder, { once: false , margin: "0px 10px -10px 0px"});
 
   const iconStyle = {
     width: screenSize.width < 1024 ? 18 : 20,
@@ -37,7 +39,7 @@ const Home = () => {
 
   const brandIconSize = () => {
     if (screenSize.width <= 640) {
-      return "240";
+      return "220";
     } else if (screenSize.width > 640 && screenSize.width < 768 ) {
       return "260";
     } else if (screenSize.width > 768 && screenSize.width < 1024 ) {
@@ -57,18 +59,21 @@ const Home = () => {
       name="Home"
       className="
         snap-center
-        h-screen
-        flex
-        flex-col-reverse
-        items-center
-        justify-center
-        md:flex-row
-        lg:justify-around
-        pt-7
-        md:pt-10
       "
     >
-      <>
+      <div
+        className="
+          h-screen
+          flex
+          flex-col-reverse
+          items-center
+          justify-center
+          md:flex-row
+          lg:justify-around
+          pt-6
+          md:pb-7
+        "
+      >
         <div
           className="
             flex
@@ -108,7 +113,8 @@ const Home = () => {
             >
               <h1 
                 className= {`
-                  mt-7
+                  mt-2
+                  md:mt-7
                   text-center
                   text-opacity-90
                   ${themeStyle.textColor}
@@ -117,7 +123,7 @@ const Home = () => {
                 <span
                   className="
                     font-bold
-                    text-[36px]
+                    text-[35px]
                     sm:text-[38px]
                     md:text-[32px]
                     lg:text-[34px]
@@ -149,7 +155,7 @@ const Home = () => {
                 mt-2
                 text-center
                 font-bold
-                text-[42px]
+                text-[40px]
                 sm:text-[44px]
                 md:text-[42px]
                 lg:text-[44px]
@@ -168,7 +174,7 @@ const Home = () => {
                 w-full
                 flex
                 justify-between
-                mt-16
+                mt-[60px]
                 md:mt-10
                 lg:mt-20
               "
@@ -225,7 +231,6 @@ const Home = () => {
             md:h-fit
             md:mb-0
             md:mt-0
-  
             "
             ref={ refFive }
             initial={{ opacity: 0, scale: 0.5 }}
@@ -289,8 +294,6 @@ const Home = () => {
               onClick={ toggleOpenDetail }
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}
-              whileTap={{ rotate: 90 }}
-
             >
               {
                 !isOpenDetail ?
@@ -304,9 +307,41 @@ const Home = () => {
             }
             <ProfileIcon isOpenDetail={ isOpenDetail } size={ brandIconSize() }/>
           </motion.div>
-          
         </motion.div>
-      </>
+      </div>
+      <motion.div
+        className={`
+          -mt-16
+          mb-10
+          md:-mt-28
+          md:mb-24
+          w-full
+          px-5
+          -top-10
+          md:-top-20
+        `}
+        ref={ refBorder }
+        initial={{ width: 0 }}
+        animate={
+          isInViewBorder ? 
+          { width: "100%" } :
+          { width: 0 }
+        }
+        transition={{
+          duration: 2,
+          delay: 0.6,
+          ease: [0, 0.71, 0.2, 1.01]
+      }}
+      >
+        <div
+          className={`
+            border-t
+            border-opacity-30
+            ${themeStyle.borderTertiary}
+          `}
+          >
+        </div>
+      </motion.div>
     </Element>
   )
 }

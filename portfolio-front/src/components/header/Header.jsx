@@ -60,7 +60,7 @@ const Header = ({headerRef, headerScroll}) => {
         justify-between
         items-center
         z-20
-        h-[100px]
+        h-[90px]
         w-full
         px-3 
         sm:px-5
@@ -73,7 +73,7 @@ const Header = ({headerRef, headerScroll}) => {
         }
       `}
       animate={{
-        height: headerScroll ? 60 : 100,
+        height: headerScroll ? 60 : 90,
       }}
     >
       <BrandIcon 

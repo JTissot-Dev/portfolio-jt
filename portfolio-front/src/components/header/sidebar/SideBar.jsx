@@ -70,7 +70,7 @@ const SideBar = ({headerScroll}) => {
           z-40
         "
         animate={{
-          height: headerScroll ? 60 : 100,
+          height: headerScroll ? 60 : 90,
         }}
       >
         <NavToggle 

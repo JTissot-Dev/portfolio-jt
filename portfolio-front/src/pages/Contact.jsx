@@ -19,33 +19,33 @@ const Contact = () => {
   const refTitleContact = useRef(null);
   const isInViewTitleContact = useInView(
     refTitleContact, 
-    { once: false , margin: "0px 20px -20px 0px"}
+    { once: false , margin: "0px 10px -10px 0px"}
   );
   const refName = useRef(null);
   const isInViewName = useInView(
     refName, 
-    { once: false , margin: "0px 20px -20px 0px"}
+    { once: false , margin: "0px 10px -10px 0px"}
   );
   const refEmail = useRef(null);
   const isInViewEmail = useInView(
     refEmail, 
-    { once: false , margin: "0px 20px -20px 0px"}
+    { once: false , margin: "0px 10px -10px 0px"}
   );
   const refArea = useRef(null);
   const isInViewArea = useInView(
     refArea, 
-    { once: false , margin: "0px 20px -20px 0px"}
+    { once: false , margin: "0px 10px -10px 0px"}
   );
   const refBorderC = useRef(null);
   const isInViewBorderC = useInView(
     refBorderC, 
-    { once: false , margin: "0px 20px -20px 0px"}
+    { once: false , margin: "0px 10px -10px 0px"}
   );
 
   const refTextContact = useRef(null);
   const isInViewTextContact = useInView(
     refTextContact, 
-    { once: false , margin: "0px 20px -20px 0px"}
+    { once: false , margin: "0px 10px -10px 0px"}
   );
 
   const refContactIcon = useRef(null)
@@ -57,7 +57,7 @@ const Contact = () => {
   const refSubmit = useRef(null)
   const isInViewSubmit = useInView(
     refSubmit, 
-    { once: false , margin: "0px 20px -20px 0px"}
+    { once: false , margin: "0px 10px -10px 0px"}
   );
 
   const refInputName = useRef(null);
@@ -294,7 +294,6 @@ const Contact = () => {
                   z-10 
                   origin-[0] 
                   bg-transparent
-                  dark:bg-gray-900 
                   px-2 
                   peer-focus:px-2 
                   peer-placeholder-shown:scale-100 
@@ -339,7 +338,6 @@ const Contact = () => {
                   w-full 
                   text-sm 
                   rounded-2xl
-                  text-gray-900 
                   border
                   border-opacity-20
                   focus:border-none

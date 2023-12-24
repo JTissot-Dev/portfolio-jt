@@ -25,14 +25,11 @@ const About = () => {
   const refTitle = useRef(null);
   const isInViewTitle = useInView(refTitle, { once: false , margin: "0px 20px -20px 0px"});
   const refFirst = useRef(null);
-  const isInViewFirst = useInView(refFirst, { once: false , margin: "0px 20px -20px 0px"});
+  const isInViewFirst = useInView(refFirst, { once: false , margin: "0px 10px -10px 0px"});
   const refSecond = useRef(null);
-  const isInViewSecond = useInView(refSecond, { once: false , margin: "0px 20px -20px 0px"});
+  const isInViewSecond = useInView(refSecond, { once: false , margin: "0px 10px -10px 0px"});
   const refThird = useRef(null);
-  const isInViewThird = useInView(refThird, { once: false , margin: "0px 20px -20px 0px"});
-  const refBorder = useRef(null);
-  const isInViewBorder = useInView(refBorder, { once: false , margin: "0px 20px -20px 0px"});
-
+  const isInViewThird = useInView(refThird, { once: false , margin: "0px 10px -10px 0px"});
 
   const skillsStyle = {
     widht: 20,
@@ -62,36 +59,6 @@ const About = () => {
       `}
     >
     <div>
-      <motion.div
-          className={`
-            absolute
-            w-full
-            px-5
-            -top-10
-            md:-top-20
-          `}
-          ref={ refBorder }
-          initial={{ width: 0 }}
-          animate={
-            isInViewBorder ? 
-            { width: "100%" } :
-            { width: 0 }
-          }
-          transition={{
-            duration: 2,
-            delay: 0.6,
-            ease: [0, 0.71, 0.2, 1.01]
-        }}
-        >
-          <div
-            className={`
-              border-t
-              border-opacity-30
-              ${themeStyle.borderTertiary}
-            `}
-            >
-          </div>
-      </motion.div>
       <motion.div
             ref={ refTitle }
             initial={{ opacity: 0, scale: 0.5 }}

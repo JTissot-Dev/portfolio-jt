@@ -14,11 +14,11 @@ const Projects = () => {
   const screenSize = useDimensions();
 
   const refTitleProj = useRef(null);
-  const isInViewTitleProj = useInView(refTitleProj, { once: false , margin: "0px 20px -20px 0px"});
+  const isInViewTitleProj = useInView(refTitleProj, { once: false , margin: "0px 10px -10px 0px"});
   const refSix = useRef(null);
-  const isInViewSix = useInView(refSix, { once: false , margin: "0px 20px -20px 0px"});
+  const isInViewSix = useInView(refSix, { once: false , margin: "0px 10px -10px 0px"});
   const refSeven = useRef(null);
-  const isInViewSeven = useInView(refSeven, { once: false , margin: "0px 20px -20px 0px"});
+  const isInViewSeven = useInView(refSeven, { once: false , margin: "0px 10px -10px 0px"});
 
 
   return (
