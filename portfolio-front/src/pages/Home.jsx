@@ -68,7 +68,7 @@ const Home = () => {
           flex-col
           justify-around
           min-h-screen
-          pt-[130px]
+          pt-[90px]
           md:pt-[170px]
         "
       >
