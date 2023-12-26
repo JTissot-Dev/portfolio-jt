@@ -55,6 +55,7 @@ const About = () => {
         flex-col
         justify-center
         md:justify-start
+        md:pt-0
         pb-12
       `}
     >
