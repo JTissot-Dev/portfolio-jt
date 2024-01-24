@@ -15,6 +15,7 @@ import BootstrapIcon from "../components/icons/BootstrapIcon"
 import PythonIcon from "../components/icons/PythonIcon"
 import PhpIcon from "../components/icons/PhpIcon"
 import PostgresIcon from "../components/icons/PostgresIcon"
+import TypeScriptIcon from "../components/icons/TypeScriptIcon"
 
 
 const About = () => {
@@ -130,6 +131,7 @@ const About = () => {
               title="Frontend"
               technos={[
                 <JavaScriptIcon style={iconStyle} />,
+                <TypeScriptIcon style={iconStyle} />,
                 <ReactIcon style={iconStyle} />,
                 <TailwindIcon style={iconStyle} />,
                 <BootstrapIcon style={iconStyle} />

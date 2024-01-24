@@ -6,6 +6,7 @@ import useDimensions from "../components/customHooks/useDimensions"
 import ProjectCard from "../components/cards/ProjectCard"
 import coopImmoGestion from "../projects/coopImmoGestion"
 import taskPlanner from "../projects/tasksPlanner"
+import ranDay from "../projects/ranDay"
 
 
 const Projects = () => {
@@ -19,6 +20,8 @@ const Projects = () => {
   const isInViewSix = useInView(refSix, { once: false , margin: "0px 10px -10px 0px"});
   const refSeven = useRef(null);
   const isInViewSeven = useInView(refSeven, { once: false , margin: "0px 10px -10px 0px"});
+  const refHeight = useRef(null);
+  const isInViewHeight = useInView(refHeight, { once: false , margin: "0px 10px -10px 0px"});
 
 
   return (
@@ -98,12 +101,12 @@ const Projects = () => {
             }}
           >
           <ProjectCard
-            title={ taskPlanner.title }
-            technos={ taskPlanner.technos }
-            date={ taskPlanner.date }
-            url="https://tasks-planner.fly.dev"
+            title={ ranDay.title }
+            technos={ ranDay.technos }
+            date={ ranDay.date }
+            url="https://ran-day.vercel.app"
           >
-            { taskPlanner.description }
+            { ranDay.description }
           </ProjectCard>
         </motion.div>
         <motion.div
@@ -121,6 +124,42 @@ const Projects = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={
               isInViewSeven ? 
+              { opacity: 1, scale: 1 } :
+              { opacity: 0, scale: 0.5 }
+            }
+            transition={{
+              duration: 0.5,
+              delay: screenSize.width < 768 ? 0.1 : 0.25,
+              ease: [0, 0.71, 0.2, 1.01]
+          }}
+        >
+          <ProjectCard
+            title={ taskPlanner.title }
+            technos={ taskPlanner.technos }
+            date={ taskPlanner.date }
+            url="https://tasks-planner.fly.dev"
+          >
+            { taskPlanner.description }
+          </ProjectCard>
+        </motion.div>
+        <motion.div
+          ref={ refHeight }
+          className="
+              flex
+              flex-col
+              justify-start
+              items-center
+              w-full
+              mx-5
+              md:mt-7
+              lg:mt-9
+              2xl:mt-10
+              md:mx-0
+              md:px-5
+            "
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={
+              isInViewHeight ? 
               { opacity: 1, scale: 1 } :
               { opacity: 0, scale: 0.5 }
             }
