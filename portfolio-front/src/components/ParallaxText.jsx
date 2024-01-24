@@ -19,6 +19,7 @@ import PythonIcon from "./icons/PythonIcon"
 import PhpIcon from "./icons/PhpIcon"
 import PostgresIcon from "./icons/PostgresIcon"
 import TypeScriptIcon from "./icons/TypeScriptIcon"
+import MySqlIcon from "./icons/MySqlIcon"
 
 
 const ParallaxText = ({ baseVelocity = 100 }) => {
@@ -124,6 +125,9 @@ const ParallaxText = ({ baseVelocity = 100 }) => {
                 </span>
                 <span className="mx-5 md:mx-7 lg:mx-10">
                   <PostgresIcon style={iconStyle} />
+                </span>
+                <span className="mx-5 md:mx-7 lg:mx-10">
+                  <MySqlIcon style={iconStyle} />
                 </span>
               </div>
             )

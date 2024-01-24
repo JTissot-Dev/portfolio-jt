@@ -16,6 +16,7 @@ import PythonIcon from "../components/icons/PythonIcon"
 import PhpIcon from "../components/icons/PhpIcon"
 import PostgresIcon from "../components/icons/PostgresIcon"
 import TypeScriptIcon from "../components/icons/TypeScriptIcon"
+import MySqlIcon from "../components/icons/MySqlIcon"
 
 
 const About = () => {
@@ -203,7 +204,7 @@ const About = () => {
                     custom-font-secondary 
                     text-[18px]
                 `}>Flask</span>.<br/>
-                J'ai appris plus récement à utiliser le framework&#160;  
+                J'ai également une bonne maîtrise du framework&#160;  
                 <span 
                   className={`
                     custom-font-secondary 
@@ -213,7 +214,7 @@ const About = () => {
                 className={`
                   custom-font-secondary 
                   text-[18px]
-                  `}>Laravel</span> avec lequel j'ai été rapidement à l'aise.
+                  `}>Laravel</span>.
               </SkillsCard>
           </motion.div>
           <motion.div
@@ -246,26 +247,28 @@ const About = () => {
                 }
                 title="Database"
                 technos={[
-                  <PostgresIcon style={iconStyle} />
+                  <PostgresIcon style={iconStyle} />,
+                  <MySqlIcon style={iconStyle} />
                 ]}
               >
-                Je maitrise principalement&#160; 
+                Je maîtrise principalement&#160; 
                 <span 
                   className={`
                     custom-font-secondary 
                     text-[18px]
-                `}>PostgreSQL</span>.<br/> 
-                Les SGBD&#160; 
+                `}>PostgreSQL</span> et&#160;
+                <span 
+                className={`
+                  custom-font-secondary 
+                  text-[18px]
+              `}>MySQL</span>.<br/> 
+                Le SGBD&#160; 
                 <span 
                   className={`
                     custom-font-secondary 
                     text-[18px]
-                `}>Oracle</span> et&#160; 
-                <span 
-                  className={`
-                    custom-font-secondary 
-                    text-[18px]
-                `}>MySQL</span> me sont également familiés.
+                `}>Oracle</span> m'est également familié.
+                 
               </SkillsCard>
           </motion.div>
         </div>
