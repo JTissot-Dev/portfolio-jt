@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import { Element } from "react-scroll"
 import { motion, useInView, useCycle } from "framer-motion"
+import { AnimatedGradientText } from "../registry/magicui/animated-gradient-text"
 import { useStateContext } from "../context/ContextProvider"
 import ProfileInfos from "../components/profileInfos/ProfileInfos"
 import useDimensions from "../components/customHooks/useDimensions"
@@ -175,7 +176,17 @@ const Home = () => {
                   ${themeStyle.textTertiary}
                 `}
                 >
-                  <span>DEVELOPPEUR<br /> FULLSTACK</span>
+                  
+                   <AnimatedGradientText
+                      speed={1}
+                      colorFrom="#1C48C5"
+                      colorTo="#FAFAF9"
+                    >
+                       <span>DEVELOPPEUR</span><br />
+                    </AnimatedGradientText>
+                    <span>FULLSTACK</span>
+                  
+                  
                 </h2>
               </motion.div>
               <motion.div

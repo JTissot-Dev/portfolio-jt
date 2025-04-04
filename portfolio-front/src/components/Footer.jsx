@@ -7,6 +7,7 @@ import MailIcon from "./icons/MailIcon"
 const Footer = () => {
 
   const {themeStyle} = useStateContext();
+  const currentYear = new Date().getFullYear();
 
   const iconStyle = {
     width: 30,
@@ -67,7 +68,7 @@ const Footer = () => {
           text-opacity-90
         `}
       >
-        <p>©Copyright 2023 - Jérôme Tissot</p>
+        <p>©Copyright {currentYear} - Jérôme Tissot</p>
       </div>
     </footer>
   )

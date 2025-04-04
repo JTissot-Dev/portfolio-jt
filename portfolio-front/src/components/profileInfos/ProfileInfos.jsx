@@ -5,15 +5,19 @@ import LocationIcon from "../icons/LocationIcon"
 import BirthDayIcon from "../icons/BirthDayIcon"
 import PhoneIcon from "../icons/PhoneIcon"
 import MailProfileIcon from "../icons/MailProfileIcon"
+import calculateAge from "../../utilities/calculateAge"
+import useDimensions from "../customHooks/useDimensions"
 
 
 const ProfileInfos = () => {
 
   const {themeStyle} = useStateContext();
+  const birthDate = "1992-05-04";
+  const {width} = useDimensions();
 
   const iconStyle = {
-    width: 20,
-    height: 20,
+    width: width < 1024 ? 17 : 20,
+    height: width < 1024 ? 17 : 20,
     fill: themeStyle.svgTertiary
   };
 
@@ -39,7 +43,7 @@ const ProfileInfos = () => {
         />
         <span
           className="ms-2"
-        >31 ans</span>
+        >{calculateAge(birthDate)} ans</span>
       </InfoItem>
       <InfoItem
         delay={ 0.1 }

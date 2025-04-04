@@ -20,6 +20,13 @@ import PhpIcon from "./icons/PhpIcon"
 import PostgresIcon from "./icons/PostgresIcon"
 import TypeScriptIcon from "./icons/TypeScriptIcon"
 import MySqlIcon from "./icons/MySqlIcon"
+import NodeJsIcon from "./icons/NodeJsIcon"
+import GraphQLIcon from "./icons/GraphQLIcon"
+import DockerIcon from "./icons/DockerIcon"
+import TraefikIcon from "./icons/TraefikIcon"
+import CaddyIcon from "./icons/CaddyIcon"
+import NginxIcon from "./icons/NginxIcon"
+import GitWorkflowIcon from "./icons/GitWorkflowIcon"
 
 
 const ParallaxText = ({ baseVelocity = 100 }) => {
@@ -121,6 +128,9 @@ const ParallaxText = ({ baseVelocity = 100 }) => {
                   <PythonIcon style={iconStyle} />
                 </span>
                 <span className="mx-5 md:mx-7 lg:mx-10">
+                  <NodeJsIcon style={iconStyle} />
+                </span>
+                <span className="mx-5 md:mx-7 lg:mx-10">
                   <PhpIcon style={iconStyle} />
                 </span>
                 <span className="mx-5 md:mx-7 lg:mx-10">
@@ -128,6 +138,24 @@ const ParallaxText = ({ baseVelocity = 100 }) => {
                 </span>
                 <span className="mx-5 md:mx-7 lg:mx-10">
                   <MySqlIcon style={iconStyle} />
+                </span>
+                <span className="mx-5 md:mx-7 lg:mx-10">
+                  <GraphQLIcon style={iconStyle} />
+                </span>
+                <span className="mx-5 md:mx-7 lg:mx-10">
+                  <DockerIcon style={iconStyle} />
+                </span>
+                <span className="mx-5 md:mx-7 lg:mx-10">
+                  <TraefikIcon style={iconStyle} />
+                </span>
+                <span className="mx-5 md:mx-7 lg:mx-10">
+                  <CaddyIcon style={iconStyle} />
+                </span>
+                <span className="mx-5 md:mx-7 lg:mx-10">
+                  <NginxIcon style={iconStyle} />
+                </span>
+                <span className="mx-5 md:mx-7 lg:mx-10">
+                  <GitWorkflowIcon style={iconStyle} />
                 </span>
               </div>
             )

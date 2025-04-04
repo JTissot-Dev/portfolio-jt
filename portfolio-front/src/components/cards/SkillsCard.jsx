@@ -75,6 +75,7 @@ const SkillsCard = ({icon, title, children, technos}) => {
           text-opacity-70
           text-sm
           whitespace-pre-line
+          text-justify
           leading-5
           ${themeStyle.textTertiary}
         `}

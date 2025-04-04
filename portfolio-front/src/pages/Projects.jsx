@@ -7,6 +7,7 @@ import ProjectCard from "../components/cards/ProjectCard"
 import coopImmoGestion from "../projects/coopImmoGestion"
 import taskPlanner from "../projects/tasksPlanner"
 import ranDay from "../projects/ranDay"
+import healthChecker from "../projects/healthChecker"
 
 
 const Projects = () => {
@@ -22,6 +23,9 @@ const Projects = () => {
   const isInViewSeven = useInView(refSeven, { once: false , margin: "0px 10px -10px 0px"});
   const refHeight = useRef(null);
   const isInViewHeight = useInView(refHeight, { once: false , margin: "0px 10px -10px 0px"});
+  const refNine = useRef(null);
+  const isInViewNine = useInView(refHeight, { once: false , margin: "0px 10px -10px 0px"});
+  
 
 
   return (
@@ -66,13 +70,11 @@ const Projects = () => {
       </motion.div>
       <div
         className="
-          flex
-          flex-col
-          justify-center
-          items-center
-          md:grid
+          grid
+          grid-cols-1
           md:grid-cols-2
-          md:place-items-start
+          gap-2
+          md:gap-8
           w-full
         " 
       > 
@@ -84,9 +86,6 @@ const Projects = () => {
                 justify-start
                 items-center
                 w-full
-                mx-5
-                md:mx-0
-                md:px-5
               "
               initial={{ opacity: 0, scale: 0.5 }}
               animate={
@@ -101,45 +100,42 @@ const Projects = () => {
             }}
           >
           <ProjectCard
-            title={ ranDay.title }
-            technos={ ranDay.technos }
-            date={ ranDay.date }
-            url="https://ran-day.vercel.app"
+            title={ healthChecker.title }
+            technos={ healthChecker.technos }
+            date={ healthChecker.date }
+            url="https://github.com/WildCodeSchool/2024-02-wns-jaune-healthcheck"
           >
-            { ranDay.description }
+            { healthChecker.description }
           </ProjectCard>
         </motion.div>
         <motion.div
           ref={ refSeven }
-          className="
-              flex
-              flex-col
-              justify-start
-              items-center
-              w-full
-              mx-5
-              md:mx-0
-              md:px-5
-            "
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={
-              isInViewSeven ? 
-              { opacity: 1, scale: 1 } :
-              { opacity: 0, scale: 0.5 }
-            }
-            transition={{
-              duration: 0.5,
-              delay: screenSize.width < 768 ? 0.1 : 0.25,
-              ease: [0, 0.71, 0.2, 1.01]
-          }}
-        >
-          <ProjectCard
-            title={ taskPlanner.title }
-            technos={ taskPlanner.technos }
-            date={ taskPlanner.date }
-            url="https://tasks-planner.fly.dev"
+            className="
+                flex
+                flex-col
+                justify-start
+                items-center
+                w-full
+              "
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={
+                isInViewSeven ? 
+                { opacity: 1, scale: 1 } :
+                { opacity: 0, scale: 0.5 }
+              }
+              transition={{
+                duration: 0.5,
+                delay: screenSize.width < 768 ? 0.1 : 0.25,
+                ease: [0, 0.71, 0.2, 1.01]
+            }}
           >
-            { taskPlanner.description }
+          <ProjectCard
+            title={ ranDay.title }
+            technos={ ranDay.technos }
+            date={ ranDay.date }
+            url="https://github.com/JTissot-Dev/ran-day"
+          >
+            { ranDay.description }
           </ProjectCard>
         </motion.div>
         <motion.div
@@ -150,12 +146,6 @@ const Projects = () => {
               justify-start
               items-center
               w-full
-              mx-5
-              md:mt-7
-              lg:mt-9
-              2xl:mt-10
-              md:mx-0
-              md:px-5
             "
             initial={{ opacity: 0, scale: 0.5 }}
             animate={
@@ -165,7 +155,37 @@ const Projects = () => {
             }
             transition={{
               duration: 0.5,
-              delay: screenSize.width < 768 ? 0.1 : 0.25,
+              delay: screenSize.width < 768 ? 0.1 : 0.40,
+              ease: [0, 0.71, 0.2, 1.01]
+          }}
+        >
+          <ProjectCard
+            title={ taskPlanner.title }
+            technos={ taskPlanner.technos }
+            date={ taskPlanner.date }
+            url="https://github.com/JTissot-Dev/task-planner"
+          >
+            { taskPlanner.description }
+          </ProjectCard>
+        </motion.div>
+        <motion.div
+          ref={ refNine }
+          className="
+              flex
+              flex-col
+              justify-start
+              items-center
+              w-full
+            "
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={
+              isInViewNine ? 
+              { opacity: 1, scale: 1 } :
+              { opacity: 0, scale: 0.5 }
+            }
+            transition={{
+              duration: 0.5,
+              delay: screenSize.width < 768 ? 0.1 : 0.50,
               ease: [0, 0.71, 0.2, 1.01]
           }}
         >
@@ -173,7 +193,7 @@ const Projects = () => {
             title={ coopImmoGestion.title }
             technos={ coopImmoGestion.technos }
             date={ coopImmoGestion.date }
-            url="https://coopimmogestion.fly.dev"
+            url="https://github.com/JTissot-Dev/CoopImmoGestion"
           >
             { coopImmoGestion.description }
           </ProjectCard>

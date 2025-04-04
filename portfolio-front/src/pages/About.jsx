@@ -17,6 +17,17 @@ import PhpIcon from "../components/icons/PhpIcon"
 import PostgresIcon from "../components/icons/PostgresIcon"
 import TypeScriptIcon from "../components/icons/TypeScriptIcon"
 import MySqlIcon from "../components/icons/MySqlIcon"
+import NodeJsIcon from "../components/icons/NodeJsIcon"
+import RestIcon from "../components/icons/RestIcon"
+import GraphQLIcon from "../components/icons/GraphQLIcon"
+import ApiIcon from "../components/icons/ApiIcon"
+import FormatTechnologyText from "../components/wrappers/FormatTechnologyText"
+import DevopsIcon from "../components/icons/DevopsIcon"
+import DockerIcon from "../components/icons/DockerIcon"
+import TraefikIcon from "../components/icons/TraefikIcon"
+import CaddyIcon from "../components/icons/CaddyIcon"
+import NginxIcon from "../components/icons/NginxIcon"
+import GitWorkflowIcon from "../components/icons/GitWorkflowIcon"
 
 
 const About = () => {
@@ -93,11 +104,14 @@ const About = () => {
         </motion.div>
         <div
           className="
-            flex
-            flex-col
+            grid-cols-1
+            gap-8
+            space-y-5
+            md:space-y-0
             md:grid
             md:grid-cols-2
             lg:grid-cols-3
+            
           "
         >
         <motion.div
@@ -108,8 +122,6 @@ const About = () => {
               items-center
               justify-center
               md:justify-start
-              mx-5
-              my-2
             "
             initial={{ opacity: 0, scale: 0.5 }}
             animate={
@@ -138,14 +150,13 @@ const About = () => {
                 <BootstrapIcon style={iconStyle} />
               ]}
             >
-              Maîtrise des fondamentaux HTML, CSS, JavaScript.<br/>
+              Maîtrise des fondamentaux 
+              <FormatTechnologyText> HTML</FormatTechnologyText>, 
+              <FormatTechnologyText> CSS</FormatTechnologyText>,
+              <FormatTechnologyText> JavaScript</FormatTechnologyText>.
               J'utilise&#160; 
-              <span 
-                className={`
-                  custom-font-secondary 
-                  text-[18px]
-                `}
-              >React</span> pour l'interface utilisateur,&#160;
+              <FormatTechnologyText>React </FormatTechnologyText>
+              pour l'interface utilisateur,&#160;
               <span 
                 className={`
                   custom-font-secondary 
@@ -166,8 +177,6 @@ const About = () => {
                 items-center
                 justify-center
                 md:justify-start
-                mx-5
-                my-2
               "
               initial={{ opacity: 0, scale: 0.5 }}
               animate={
@@ -190,31 +199,24 @@ const About = () => {
                 title="Backend"
                 technos={[
                   <PythonIcon style={iconStyle} />,
-                  <PhpIcon style={iconStyle} />
+                  <NodeJsIcon style={iconStyle} />,
+                  <PhpIcon style={iconStyle} />,
                 ]}
               >
                 J'apprécie particulièrement le langage&#160; 
-                <span 
-                  className={`
-                    custom-font-secondary 
-                    text-[18px]
-                `}>Python</span>, et j'ai une bonne connaissance du framework&#160; 
-                <span 
-                  className={`
-                    custom-font-secondary 
-                    text-[18px]
-                `}>Flask</span>.<br/>
-                J'ai également une bonne maîtrise du framework&#160;  
-                <span 
-                  className={`
-                    custom-font-secondary 
-                    text-[18px]
-                `}>PHP</span>&#160;  
-                <span 
-                className={`
-                  custom-font-secondary 
-                  text-[18px]
-                  `}>Laravel</span>.
+                <FormatTechnologyText>Python </FormatTechnologyText>
+                et maitrise les frameworks&#160; 
+                <FormatTechnologyText>FastAPI</FormatTechnologyText>
+                <span> et </span>
+                <FormatTechnologyText>Flask</FormatTechnologyText>.<br/>
+                J'ai également une bonne maîtrise de 
+                <FormatTechnologyText> Node.js </FormatTechnologyText> 
+                avec le framework&#160;  
+                <FormatTechnologyText>Express</FormatTechnologyText>
+                <span> et la librairie </span>
+                <FormatTechnologyText>Apollo Server</FormatTechnologyText>
+                <span> ainsi que du framework </span>
+                <FormatTechnologyText>PHP Laravel</FormatTechnologyText>.
               </SkillsCard>
           </motion.div>
           <motion.div
@@ -225,8 +227,6 @@ const About = () => {
                 items-center
                 justify-center
                 md:justify-start
-                mx-5
-                my-2
               "
               initial={{ opacity: 0, scale: 0.5 }}
               animate={isInViewThird ? 
@@ -251,24 +251,102 @@ const About = () => {
                   <MySqlIcon style={iconStyle} />
                 ]}
               >
-                Je maîtrise principalement&#160; 
-                <span 
-                  className={`
-                    custom-font-secondary 
-                    text-[18px]
-                `}>PostgreSQL</span> et&#160;
-                <span 
-                className={`
-                  custom-font-secondary 
-                  text-[18px]
-              `}>MySQL</span>.<br/> 
+                Je maîtrise principalement
+                <FormatTechnologyText> PostgreSQL </FormatTechnologyText>
+                et&#160;
+                <FormatTechnologyText>MySQL</FormatTechnologyText>.
                 Le SGBD&#160; 
-                <span 
-                  className={`
-                    custom-font-secondary 
-                    text-[18px]
-                `}>Oracle</span> m'est également familié.
-                 
+                <FormatTechnologyText>Oracle </FormatTechnologyText>
+                m'est également familié.
+              </SkillsCard>
+          </motion.div>
+          <motion.div
+              ref={refThird}
+              className="
+                flex
+                flex-col
+                items-center
+                justify-center
+                md:justify-start
+              "
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={isInViewThird ? 
+                { opacity: 1, scale: 1 } : 
+                { opacity: 0, scale: 0.5 }
+              }
+              transition={{
+                duration: 0.5,
+                delay: screenSize.width < 768 ? 0.1 : 0.4,
+                ease: [0, 0.71, 0.2, 1.01]
+            }}
+            >
+              <SkillsCard
+                icon={ 
+                  <ApiIcon 
+                    style={ skillsStyle }
+                  /> 
+                }
+                title="API"
+                technos={[
+                  <RestIcon style={iconStyle} />,
+                  <GraphQLIcon style={iconStyle} />
+                ]}
+              >
+                Je maîtrise à la fois le modèle&#160; 
+                <FormatTechnologyText>REST</FormatTechnologyText>
+                <span>
+                , une référence pour l'architecture des applications web modernes, et le langage de requête&#160; 
+                </span>
+                <FormatTechnologyText>GraphQL</FormatTechnologyText>
+                <span>
+                , offrant une flexibilité et une efficacité accrues dans la gestion des données. Ces compétences me permettent de concevoir des API performantes, robustes et parfaitement adaptées aux besoins spécifiques des utilisateurs.
+                </span>
+              </SkillsCard>
+          </motion.div>
+          <motion.div
+              ref={refThird}
+              className="
+                flex
+                flex-col
+                items-center
+                justify-center
+                md:justify-start
+              "
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={isInViewThird ? 
+                { opacity: 1, scale: 1 } : 
+                { opacity: 0, scale: 0.5 }
+              }
+              transition={{
+                duration: 0.5,
+                delay: screenSize.width < 768 ? 0.1 : 0.5,
+                ease: [0, 0.71, 0.2, 1.01]
+            }}
+            >
+              <SkillsCard
+                icon={ 
+                  <DevopsIcon 
+                    style={ skillsStyle }
+                  /> 
+                }
+                title="DevOps"
+                technos={[
+                  <DockerIcon style={iconStyle} />,
+                  <TraefikIcon style={iconStyle} />,
+                  <CaddyIcon style={iconStyle} />,
+                  <NginxIcon style={iconStyle} />,
+                  <GitWorkflowIcon style={iconStyle} />,
+                ]}
+              >
+                <span>Je suis à l'aise avec l'utilisation d'outils DevOps tels que</span> 
+                <FormatTechnologyText> Docker </FormatTechnologyText> 
+                <span>pour la containerisation des applications, ainsi que </span>
+                <FormatTechnologyText>Traefik</FormatTechnologyText>,
+                <FormatTechnologyText> Caddy</FormatTechnologyText> et 
+                <FormatTechnologyText> Nginx </FormatTechnologyText>
+                <span>pour la mise en place d'infrastructures réseau. J'ai également travaillé avec </span> 
+                <FormatTechnologyText>GitHub Workflows </FormatTechnologyText>
+                pour la mise en place de pipeline CI/CD.
               </SkillsCard>
           </motion.div>
         </div>
