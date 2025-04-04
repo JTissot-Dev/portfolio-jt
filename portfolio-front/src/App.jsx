@@ -39,7 +39,6 @@ function App() {
       setHeaderScroll(false);
       if (headerRef.current) {
         setHeaderHeight(headerRef.current.clientHeight);
-
       }
     }
 
