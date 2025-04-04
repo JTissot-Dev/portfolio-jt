@@ -24,7 +24,7 @@ const Projects = () => {
   const refHeight = useRef(null);
   const isInViewHeight = useInView(refHeight, { once: false , margin: "0px 10px -10px 0px"});
   const refNine = useRef(null);
-  const isInViewNine = useInView(refHeight, { once: false , margin: "0px 10px -10px 0px"});
+  const isInViewNine = useInView(refNine, { once: false , margin: "0px 10px -10px 0px"});
   
 
 

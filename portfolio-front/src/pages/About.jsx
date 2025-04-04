@@ -37,12 +37,16 @@ const About = () => {
 
   const refTitle = useRef(null);
   const isInViewTitle = useInView(refTitle, { once: false , margin: "0px 20px -20px 0px"});
-  const refFirst = useRef(null);
-  const isInViewFirst = useInView(refFirst, { once: false , margin: "0px 10px -10px 0px"});
-  const refSecond = useRef(null);
-  const isInViewSecond = useInView(refSecond, { once: false , margin: "0px 10px -10px 0px"});
-  const refThird = useRef(null);
-  const isInViewThird = useInView(refThird, { once: false , margin: "0px 10px -10px 0px"});
+  const refFrontend = useRef(null);
+  const isInViewFrontend = useInView(refFrontend, { once: false , margin: "0px 10px -10px 0px"});
+  const refBackend = useRef(null);
+  const isInViewBackend = useInView(refBackend, { once: false , margin: "0px 10px -10px 0px"});
+  const refDatabase = useRef(null);
+  const isInViewDatabase = useInView(refDatabase, { once: false , margin: "0px 10px -10px 0px"});
+  const refAPI = useRef(null);
+  const isInViewAPI = useInView(refAPI, { once: false , margin: "0px 10px -10px 0px"});
+  const refDevOps = useRef(null);
+  const isInViewDevOps = useInView(refDevOps, { once: false , margin: "0px 10px -10px 0px"});
 
   const skillsStyle = {
     widht: 20,
@@ -70,6 +74,8 @@ const About = () => {
         md:justify-start
         md:pt-0
         pb-12
+        px-5
+        md:px-0
       `}
     >
     <div>
@@ -115,7 +121,7 @@ const About = () => {
           "
         >
         <motion.div
-            ref={ refFirst }
+            ref={ refFrontend }
             className="
               flex
               flex-col
@@ -125,7 +131,7 @@ const About = () => {
             "
             initial={{ opacity: 0, scale: 0.5 }}
             animate={
-              isInViewFirst ? 
+              isInViewFrontend ? 
               { opacity: 1, scale: 1 } :
               { opacity: 0, scale: 0.5 }
             }
@@ -170,7 +176,7 @@ const About = () => {
             </SkillsCard>
           </motion.div>
           <motion.div
-              ref={ refSecond }
+              ref={ refBackend }
               className="
                 flex
                 flex-col
@@ -180,7 +186,7 @@ const About = () => {
               "
               initial={{ opacity: 0, scale: 0.5 }}
               animate={
-                isInViewSecond ? 
+                isInViewBackend ? 
                 { opacity: 1, scale: 1 } : 
                 { opacity: 0, scale: 0.5 }
               }
@@ -220,7 +226,7 @@ const About = () => {
               </SkillsCard>
           </motion.div>
           <motion.div
-              ref={refThird}
+              ref={refDatabase}
               className="
                 flex
                 flex-col
@@ -229,7 +235,7 @@ const About = () => {
                 md:justify-start
               "
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={isInViewThird ? 
+              animate={isInViewDatabase ? 
                 { opacity: 1, scale: 1 } : 
                 { opacity: 0, scale: 0.5 }
               }
@@ -261,7 +267,7 @@ const About = () => {
               </SkillsCard>
           </motion.div>
           <motion.div
-              ref={refThird}
+              ref={refAPI}
               className="
                 flex
                 flex-col
@@ -270,7 +276,7 @@ const About = () => {
                 md:justify-start
               "
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={isInViewThird ? 
+              animate={isInViewAPI ? 
                 { opacity: 1, scale: 1 } : 
                 { opacity: 0, scale: 0.5 }
               }
@@ -304,7 +310,7 @@ const About = () => {
               </SkillsCard>
           </motion.div>
           <motion.div
-              ref={refThird}
+              ref={refDevOps}
               className="
                 flex
                 flex-col
@@ -313,7 +319,7 @@ const About = () => {
                 md:justify-start
               "
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={isInViewThird ? 
+              animate={isInViewDevOps ? 
                 { opacity: 1, scale: 1 } : 
                 { opacity: 0, scale: 0.5 }
               }

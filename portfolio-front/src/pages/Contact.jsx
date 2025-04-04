@@ -135,6 +135,7 @@ const Contact = () => {
           absolute
           w-full
           px-5
+          md:px-0
           top-10
           md:top-[70px]
         `}
@@ -205,7 +206,8 @@ const Contact = () => {
         >
           <motion.div
           className={`
-            px-6
+            px-5
+            md:px-0
             mb-6
             text-opacity-90
             font-light
@@ -231,6 +233,7 @@ const Contact = () => {
           <form
             className="
               mx-5
+              md:mx-0
               z-20
             "
             onSubmit={ handleSubmit }

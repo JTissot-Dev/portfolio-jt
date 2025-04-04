@@ -1,5 +1,6 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { Element } from "react-scroll"
+import clsx from "clsx"
 import { motion, useInView, useCycle } from "framer-motion"
 import { AnimatedGradientText } from "../registry/magicui/animated-gradient-text"
 import { useStateContext } from "../context/ContextProvider"
@@ -12,24 +13,25 @@ import MailIcon from "../components/icons/MailIcon"
 import ProfileIcon from "../components/icons/ProfileIcon"
 import ProfileInfoIcon from "../components/icons/ProfileInfoIcon"
 import CloseIcon from "../components/icons/CloseIcon"
+import { BorderBeam } from "../registry/magicui/border-beam"
 
 
 const Home = () => {
 
-  const {themeStyle, activeLink} = useStateContext();
+  const { themeStyle, theme } = useStateContext();
   const [isOpenDetail, toggleOpenDetail] = useCycle(false, true);
   const screenSize = useDimensions();
 
   const refFour = useRef(null);
-  const isInViewFour = useInView(refFour, { once: false , margin: "0px 10px -10px 0px"});
+  const isInViewFour = useInView(refFour, { once: false, margin: "0px 10px -10px 0px" });
   const refFourH = useRef(null);
-  const isInViewFourH = useInView(refFourH, { once: false , margin: "0px 10px -10px 0px"});
+  const isInViewFourH = useInView(refFourH, { once: false, margin: "0px 10px -10px 0px" });
   const refFive = useRef(null);
-  const isInViewFive = useInView(refFive, { once: false , margin: "0px 10px -10px 0px"});
+  const isInViewFive = useInView(refFive, { once: false, margin: "0px 10px -10px 0px" });
   const refContact = useRef(null);
-  const isInViewContact = useInView(refContact, { once: false , margin: "0px 10px -10px 0px"});
+  const isInViewContact = useInView(refContact, { once: false, margin: "0px 10px -10px 0px" });
   const refBorder = useRef(null);
-  const isInViewBorder = useInView(refBorder, { once: false , margin: "0px 10px -10px 0px"});
+  const isInViewBorder = useInView(refBorder, { once: false, margin: "0px 10px -10px 0px" });
 
   const iconStyle = {
     width: screenSize.width < 1024 ? 18 : 20,
@@ -41,15 +43,15 @@ const Home = () => {
   const brandIconSize = () => {
     if (screenSize.width <= 640) {
       return "220";
-    } else if (screenSize.width > 640 && screenSize.width < 768 ) {
+    } else if (screenSize.width > 640 && screenSize.width < 768) {
       return "260";
-    } else if (screenSize.width > 768 && screenSize.width < 1024 ) {
+    } else if (screenSize.width > 768 && screenSize.width < 1024) {
       return "270";
-    } else if (screenSize.width > 1024 && screenSize.width < 1280 ) {
+    } else if (screenSize.width > 1024 && screenSize.width < 1280) {
       return "310";
-    } else if (screenSize.width > 1280 && screenSize.width < 1536 ) {
+    } else if (screenSize.width > 1280 && screenSize.width < 1536) {
       return "330";
-    } else if (screenSize.width >= 1536 ) {
+    } else if (screenSize.width >= 1536) {
       return "350";
     }
   };
@@ -74,16 +76,42 @@ const Home = () => {
         "
       >
         <div
-          className="
-            relative
-            flex
-            flex-col-reverse
-            items-center
-            justify-center
-            md:flex-row
-            lg:justify-around
-          "
+          className={
+            clsx(
+              "relative",
+              "flex",
+              "flex-col-reverse",
+              "items-center",
+              "justify-center",
+              "md:flex-row",
+              "lg:justify-around",
+              "mx-5",
+              "md:mx-0",
+              "py-7",
+              "-my-7",
+              "md:py-14",
+              "md:-my-14",
+              screenSize.width <= 640 ? "rounded-[5px]" : "rounded-[30px]"
+            )
+          }
         >
+          <BorderBeam
+            className={
+              theme === 'Dark' ?
+              "from-transparent via-zinc-400 to-transparent" :
+              "from-transparent via-[#8f8e8ec2] to-transparent"
+            }
+            size={screenSize.width <= 640 ? 200 : 500}
+          />
+          <BorderBeam
+            className={
+              theme === 'Dark' ?
+              "from-transparent via-zinc-400 to-transparent" :
+              "from-transparent via-[#8f8e8ec2] to-transparent"
+            }
+            size={screenSize.width <= 640 ? 200 : 500}
+            delay={3}
+          />
           <div
             className="
               flex
@@ -91,9 +119,8 @@ const Home = () => {
               justify-center
               items-center
               md:items-start
-              mx-5
-              md:mx-0
-              md:me-5
+              px-3
+              md:px-0
               mt-5
               md:mt-0
             "
@@ -104,16 +131,16 @@ const Home = () => {
                 flex
                 flex-col
                 items-center
-                md:mb-5
+                md:mb-3
               "
             >
               <motion.div
-                ref={ refFour }
+                ref={refFour}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={
-                  isInViewFour ? 
-                  { opacity: 1, scale: 1 } :
-                  { opacity: 0, scale: 0.5 }
+                  isInViewFour ?
+                    { opacity: 1, scale: 1 } :
+                    { opacity: 0, scale: 0.5 }
                 }
                 transition={{
                   duration: 0.5,
@@ -121,8 +148,8 @@ const Home = () => {
                   ease: [0, 0.71, 0.2, 1.01]
                 }}
               >
-                <h1 
-                  className= {`
+                <h1
+                  className={`
                     mt-2
                     md:mt-7
                     text-center
@@ -142,17 +169,23 @@ const Home = () => {
                       custom-font-secondary
                     "
                   >
-                    Jérôme Tissot
+                    <AnimatedGradientText
+                      speed={1}
+                      colorFrom={theme === 'Dark' ? "#1C48C5" : "#3E90A6"}
+                      colorTo={theme === 'Dark' ? "#192966" : "#AEC4C6"}
+                    >
+                      Jérôme Tissot
+                    </AnimatedGradientText>
                   </span>
                 </h1>
               </motion.div>
               <motion.div
-                ref={ refFourH }
+                ref={refFourH}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={
-                  isInViewFourH ? 
-                  { opacity: 1, scale: 1 } :
-                  { opacity: 0, scale: 0.5 }
+                  isInViewFourH ?
+                    { opacity: 1, scale: 1 } :
+                    { opacity: 0, scale: 0.5 }
                 }
                 transition={{
                   duration: 0.5,
@@ -161,7 +194,7 @@ const Home = () => {
                 }}
               >
                 <h2
-                  className= {`
+                  className={`
                   mt-2
                   text-center
                   font-bold
@@ -176,17 +209,8 @@ const Home = () => {
                   ${themeStyle.textTertiary}
                 `}
                 >
-                  
-                   <AnimatedGradientText
-                      speed={1}
-                      colorFrom="#1C48C5"
-                      colorTo="#FAFAF9"
-                    >
-                       <span>DEVELOPPEUR</span><br />
-                    </AnimatedGradientText>
-                    <span>FULLSTACK</span>
-                  
-                  
+                  <span>DEVELOPPEUR</span><br />
+                  <span>FULLSTACK</span>
                 </h2>
               </motion.div>
               <motion.div
@@ -198,12 +222,12 @@ const Home = () => {
                   md:mt-10
                   lg:mt-20
                 "
-                ref={ refContact }
+                ref={refContact}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={
-                  isInViewContact ? 
-                  { opacity: 1, scale: 1 } :
-                  { opacity: 0, scale: 0.5 }
+                  isInViewContact ?
+                    { opacity: 1, scale: 1 } :
+                    { opacity: 0, scale: 0.5 }
                 }
                 transition={{
                   duration: 0.5,
@@ -213,8 +237,8 @@ const Home = () => {
               >
                 <ContactWrap
                   icon={
-                    <GitHubIcon  
-                      style={ iconStyle }
+                    <GitHubIcon
+                      style={iconStyle}
                     />
                   }
                   path="https://github.com/JTissot-Dev"
@@ -223,8 +247,8 @@ const Home = () => {
                 </ContactWrap>
                 <ContactWrap
                   icon={
-                    <LinkedinIcon  
-                      style={ iconStyle }
+                    <LinkedinIcon
+                      style={iconStyle}
                     />
                   }
                   path="https://www.linkedin.com/in/j%C3%A9r%C3%B4me-tissot-616514292/"
@@ -233,8 +257,8 @@ const Home = () => {
                 </ContactWrap>
                 <ContactWrap
                   icon={
-                    <MailIcon 
-                      style={ iconStyle }
+                    <MailIcon
+                      style={iconStyle}
                     />
                   }
                   path="mailto:jerome.tissot.dev@gmail.com"
@@ -245,26 +269,26 @@ const Home = () => {
             </div>
           </div>
           <motion.div
-              className="
+            className="
               mb-2
               h-64
               md:h-fit
               md:mb-0
               md:mt-0
               "
-              ref={ refFive }
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={
-                isInViewFive ? 
+            ref={refFive}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={
+              isInViewFive ?
                 { opacity: 1, scale: 1 } :
                 { opacity: 0, scale: 0.5 }
-              }
-              transition={{
-                duration: 0.5,
-                delay: screenSize.width <= 768 ? 0.1 : 0.5,
-                ease: [0, 0.71, 0.2, 1.01]
-              }}
-            >
+            }
+            transition={{
+              duration: 0.5,
+              delay: screenSize.width <= 768 ? 0.1 : 0.5,
+              ease: [0, 0.71, 0.2, 1.01]
+            }}
+          >
             <motion.div
               className={`
                 relative
@@ -275,20 +299,19 @@ const Home = () => {
                 lg:w-[310px]
                 xl:w-[332px]
                 2xl:w-[340px]
-                ${ 
-                  isOpenDetail ? 
-                    "border " + 
-                    "border-opacity-20 " + 
-                    themeStyle.borderTertiary +
-                    " " + themeStyle.bgColor :
-                    "rounded-[17%]"
+                ${isOpenDetail ?
+                  "border " +
+                  "border-opacity-20 " +
+                  themeStyle.borderTertiary +
+                  " " + themeStyle.bgColor : ""
+
                 }
               `}
               initial={{ scale: 1 }}
               animate={
                 isOpenDetail ?
-                { scale: 1.1 } :
-                { scale: 1 }
+                  { scale: 1.1 } :
+                  { scale: 1 }
               }
             >
               <motion.button
@@ -302,8 +325,7 @@ const Home = () => {
                   p-2
                   md:p-2.5
                   lg:p-3
-                  ${
-                    !isOpenDetail ?
+                  ${!isOpenDetail ?
                     "border " +
                     "border-opacity-40" :
                     ""
@@ -312,7 +334,7 @@ const Home = () => {
                   ${themeStyle.borderTertiary}
                 `}
                 type="button"
-                onClick={ toggleOpenDetail }
+                onClick={toggleOpenDetail}
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
               >
@@ -321,12 +343,12 @@ const Home = () => {
                     <ProfileInfoIcon /> :
                     <CloseIcon />
                 }
-              </motion.button> 
+              </motion.button>
               {
                 isOpenDetail &&
-                  <ProfileInfos />
+                <ProfileInfos />
               }
-              <ProfileIcon isOpenDetail={ isOpenDetail } size={ brandIconSize() }/>
+              <ProfileIcon isOpenDetail={isOpenDetail} size={brandIconSize()} />
             </motion.div>
           </motion.div>
         </div>
@@ -340,32 +362,33 @@ const Home = () => {
           "
         >
           <motion.div
-          className={`
+            className={`
             h-[0.5px]
             w-full
             px-5
+            md:px-0
           `}
-          ref={ refBorder }
-          initial={{ width: 0 }}
-          animate={
-            isInViewBorder ? 
-            { width: "100%" } :
-            { width: 0 }
-          }
-          transition={{
-            duration: 2,
-            delay: 0.6,
-            ease: [0, 0.71, 0.2, 1.01]
-        }}
-        >
-          <div
-            className={`
+            ref={refBorder}
+            initial={{ width: 0 }}
+            animate={
+              isInViewBorder ?
+                { width: "100%" } :
+                { width: 0 }
+            }
+            transition={{
+              duration: 2,
+              delay: 0.6,
+              ease: [0, 0.71, 0.2, 1.01]
+            }}
+          >
+            <div
+              className={`
               border-t
               border-opacity-30
               ${themeStyle.borderTertiary}
             `}
             >
-          </div>
+            </div>
           </motion.div>
         </div>
 
